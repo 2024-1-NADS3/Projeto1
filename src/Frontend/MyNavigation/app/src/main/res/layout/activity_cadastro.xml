@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".cadastro">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="222dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginBottom="69dp"
+        android:src="@drawable/group_25"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="130dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#293898"
+        android:onClick="Cadastrar"
+        android:text="CADASTRAR"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/senhaCadastro" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="22dp"
+        android:width="150dp"
+        android:backgroundTint="#C2C2C2"
+        android:onClick="BotaoLogin"
+        android:text="Fazer login"
+        android:textColor="#767676"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:strokeColor="#767676"
+        app:strokeWidth="1.5px" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="32dp"
+        android:text="Adicione os dados para se cadastrar."
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <EditText
+        android:id="@+id/senhaCadastro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="51dp"
+        android:width="2dp"
+        android:background="#C3C3C3"
+        android:color="@android:color/black"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPersonName"
+        android:padding="8dp"
+        android:paddingStart="50px"
+        android:shadowColor="#000000"
+        android:textColor="#767676"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailCadastro" />
+
+    <EditText
+        android:id="@+id/emailCadastro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="23dp"
+        android:background="#C3C3C3"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textPersonName"
+        android:paddingStart="50px"
+        android:shadowColor="#000000"
+        android:textColor="#767676"
+        app:layout_constraintBottom_toTopOf="@+id/senhaCadastro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nome" />
+
+    <EditText
+        android:id="@+id/nome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="24dp"
+        android:background="#C3C3C3"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:paddingStart="50px"
+        android:shadowColor="#000000"
+        android:textColor="#767676"
+        app:layout_constraintBottom_toTopOf="@+id/emailCadastro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:gravity="center"
+        android:text="Já possui uma conta?"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

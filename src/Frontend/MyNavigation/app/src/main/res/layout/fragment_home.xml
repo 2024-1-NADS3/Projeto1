@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imagemResultado"
+        android:layout_width="84dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/neutro" />
+
+
+    <ImageView
+        android:id="@+id/malButton"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="321dp"
+        android:onClick="selecionadoBad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/normalButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
+        app:layout_constraintVertical_bias="0.116"
+        app:srcCompat="@drawable/mal" />
+
+    <ImageView
+        android:id="@+id/normalButton"
+        android:layout_width="76dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="321dp"
+        android:onClick="selecionadoNormal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/felizButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/malButton"
+        app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
+        app:layout_constraintVertical_bias="0.118"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/felizButton"
+        android:layout_width="56dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="321dp"
+        android:onClick="selecionadoHappy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/normalButton"
+        app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
+        app:layout_constraintVertical_bias="0.123"
+        app:srcCompat="@drawable/feliz" />
+
+
+    <Button
+        android:id="@+id/btn_nova_tarefa"
+        android:layout_width="123dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="100dp"
+        android:background="@color/purple_200"
+        android:padding="10dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="10dp"
+        android:text="Adicionar nova tarefa"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="?attr/dialogCornerRadius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.805"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/normalButton" />
+
+    <Button
+        android:id="@+id/btn_nova_tarefa2"
+        android:layout_width="128dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="100dp"
+        android:background="@color/purple_200"
+        android:padding="10dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="10dp"
+        android:text="Ver Todas As Tarefas"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="?attr/dialogCornerRadius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/normalButton" />
+
+    <TextView
+        android:id="@+id/dataHoje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="25dp"
+        android:text="Data de hoje"
+        android:textColor="@android:color/black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -109,7 +109,7 @@ tools:context=".ui.home.HomeFragment">
     app:layout_constraintTop_toBottomOf="@+id/normalButton" />
 
 <androidx.appcompat.widget.AppCompatButton
-    android:id="@+id/btn_nova_tarefa2"
+    android:id="@+id/btn_ver_tarefas"
     android:layout_width="128dp"
     android:layout_height="103dp"
     android:layout_marginTop="50dp"

@@ -39,19 +39,7 @@ public class HomeFragment extends Fragment {
         String dataAtualText = sdf.format(Calendar.getInstance().getTime());
         dataHoje.setText(dataAtualText);
 
-        // Lidando com o clique do botão para iniciar a AdicionarTarefaActivity
-       // Button btnNovaTarefa = binding.btnNovaTarefa;
-       // btnNovaTarefa.setOnClickListener(new View.OnClickListener() {
-           // @Override
-           // public void onClick(View v) {
-                // Obter NavController a partir do Navigation Host Fragment
-                //NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
-                // Navegar para o destino definido no arquivo de navegação (nav_graph.xml)
-                //navController.navigate(R.id.action_homeFragment_to_adicionarTarefaFragment);
-            //}
-        //});
 
-        // Lidando com a seleção da opção (bad, normal, happy)
         binding.malButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

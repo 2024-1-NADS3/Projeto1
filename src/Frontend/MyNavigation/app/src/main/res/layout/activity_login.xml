@@ -24,7 +24,7 @@
         android:layout_width="130dp"
         android:layout_height="0dp"
         android:layout_marginBottom="48dp"
-        android:backgroundTint="#293898"
+        android:backgroundTint="@color/azul"
         android:onClick="Login"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/button2"

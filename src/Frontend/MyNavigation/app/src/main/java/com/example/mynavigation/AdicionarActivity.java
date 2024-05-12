@@ -23,7 +23,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-
 public class AdicionarActivity extends AppCompatActivity {
     private EditText nomeTarefa;
     private Button selectDateButton, adicionarTarefa, definirHorarioButton;
@@ -95,13 +94,18 @@ public class AdicionarActivity extends AppCompatActivity {
 
         //BOTÃO QUE IRÁ ENVIAR PARA TABELA DO SQLlITE
         adicionarTarefa.setOnClickListener(v -> {
+
             try {
+                String novaTarefa = nomeTarefa.getText().toString();
+                if (novaTarefa.isEmpty()) {
+                    // Se estiver vazio exibe um toast
+                    Toast.makeText(AdicionarActivity.this, "O campo Nome da Tarefa não pode estar vazio", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 // Abre ou cria o banco de dados
                 SQLiteDatabase bancoDados = openOrCreateDatabase("CheckList", MODE_PRIVATE, null);
-                bancoDados.execSQL("CREATE TABLE IF NOT EXISTS minhasTarefas2 (id INTEGER PRIMARY KEY AUTOINCREMENT, tarefa VARCHAR, data_hora DATETIME)");
+                bancoDados.execSQL("CREATE TABLE IF NOT EXISTS minhasTarefas (id INTEGER PRIMARY KEY AUTOINCREMENT, tarefa VARCHAR, data_hora DATETIME)");
 
-                // nome da tarefa
-                String novaTarefa = nomeTarefa.getText().toString();
                 // data e horário
                 String dataHoraTarefa = calendarioTextView.getText().toString() + " " + horarioTextView.getText().toString();
 
@@ -113,6 +117,11 @@ public class AdicionarActivity extends AppCompatActivity {
                 int indiceColunaID = cursor.getColumnIndex("id");
                 int indiceColunaTarefa = cursor.getColumnIndex("tarefa");
                 int indiceColunaDataHora = cursor.getColumnIndex("data_hora");
+
+                nomeTarefa.setText("");
+                calendarioTextView.setText("");
+                horarioTextView.setText("");
+                finish();
 
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {

@@ -5,4 +5,10 @@
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="titulo1">Sua organização na palma da sua mão</string>
+    <string name="titulo2">Um app simples e intuitivo</string>
+
+    <string name="descricao1">Você está dando o primeiro passo para organizar a sua rotina</string>
+    <string name="descricao2">Desenvolvemos uma interface que qualquer um possa utilizar</string>
 </resources>

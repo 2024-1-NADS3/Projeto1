@@ -10,4 +10,7 @@
     <color name="blue">#042C92</color>
     <color name="verde_neon">#A9FF8A</color>
     <color name="azul">#293898</color>
+
+    //indicator color
+    <color name="inactive">#C4C4C4</color>
 </resources>

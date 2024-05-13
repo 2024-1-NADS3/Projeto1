@@ -12,7 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
 
-
     <fragment
         android:id="@+id/navigation_tarefas"
         android:name="com.example.mynavigation.ui.tarefas.TarefasFragment"
@@ -29,7 +28,7 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.mynavigation.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="Perfil"
         tools:layout="@layout/fragment_notifications" />
 
 </navigation>

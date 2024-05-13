@@ -1,4 +1,4 @@
-package com.example.mynavigation;
+package com.example.mynavigation.ui.slider;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -11,13 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.View;
 
+import com.example.mynavigation.R;
+import com.example.mynavigation.login;
+
 public class Slider extends AppCompatActivity {
 
     ViewPager mSLideViewPager;
     LinearLayout mDotLayout;
     Button btnPular;
     TextView[] dots;
-    viewPagerAdapter viewPagerAdapter;
+    com.example.mynavigation.ui.slider.viewPagerAdapter viewPagerAdapter;
 
 
 
@@ -31,7 +34,7 @@ public class Slider extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(Slider.this,login.class);
+                Intent i = new Intent(Slider.this, login.class);
                 startActivity(i);
                 finish();
 

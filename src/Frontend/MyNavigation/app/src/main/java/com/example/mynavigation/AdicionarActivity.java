@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -104,16 +105,16 @@ public class AdicionarActivity extends AppCompatActivity {
                 }
                 // Abre ou cria o banco de dados
                 SQLiteDatabase bancoDados = openOrCreateDatabase("CheckList", MODE_PRIVATE, null);
-                bancoDados.execSQL("CREATE TABLE IF NOT EXISTS minhasTarefas (id INTEGER PRIMARY KEY AUTOINCREMENT, tarefa VARCHAR, data_hora DATETIME)");
+                bancoDados.execSQL("CREATE TABLE IF NOT EXISTS minhasTarefas2 (id INTEGER PRIMARY KEY AUTOINCREMENT, tarefa VARCHAR, data_hora DATETIME)");
 
                 // data e horário
                 String dataHoraTarefa = calendarioTextView.getText().toString() + " " + horarioTextView.getText().toString();
 
                 // Insere na tabela minhasTarefas
-                bancoDados.execSQL("INSERT INTO minhasTarefas (tarefa, data_hora) VALUES('" + novaTarefa + "', '" + dataHoraTarefa + "')");
+                bancoDados.execSQL("INSERT INTO minhasTarefas2 (tarefa, data_hora) VALUES('" + novaTarefa + "', '" + dataHoraTarefa + "')");
 
                 // Exibindo no log com comando SELECT sql
-                Cursor cursor = bancoDados.rawQuery("SELECT * FROM minhasTarefas", null);
+                Cursor cursor = bancoDados.rawQuery("SELECT * FROM minhasTarefas2", null);
                 int indiceColunaID = cursor.getColumnIndex("id");
                 int indiceColunaTarefa = cursor.getColumnIndex("tarefa");
                 int indiceColunaDataHora = cursor.getColumnIndex("data_hora");

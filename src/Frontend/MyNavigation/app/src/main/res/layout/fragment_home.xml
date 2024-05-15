@@ -20,50 +20,41 @@ tools:context=".ui.home.HomeFragment">
     app:srcCompat="@drawable/neutro" />
 
 
-<ImageView
-    android:id="@+id/felizButton"
-    android:layout_width="56dp"
-    android:layout_height="53dp"
-    android:layout_marginTop="140dp"
-    android:layout_marginBottom="321dp"
-    android:onClick="selecionadoHappy"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toEndOf="@+id/normalButton"
-    app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
-    app:layout_constraintVertical_bias="0.848"
-    app:srcCompat="@drawable/feliz" />
+    <ImageView
+        android:id="@+id/felizButton"
+        android:layout_width="56dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="64dp"
+        android:onClick="selecionadoHappy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/normalButton"
+        app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
+        app:srcCompat="@drawable/feliz" />
 
-<ImageView
-    android:id="@+id/normalButton"
-    android:layout_width="76dp"
-    android:layout_height="54dp"
-    android:layout_marginTop="140dp"
-    android:layout_marginBottom="321dp"
-    android:onClick="selecionadoNormal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/felizButton"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toEndOf="@+id/malButton"
-    app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
-    app:layout_constraintVertical_bias="0.847"
-    app:srcCompat="@drawable/normal" />
+    <ImageView
+        android:id="@+id/normalButton"
+        android:layout_width="76dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="64dp"
+        android:onClick="selecionadoNormal"
+        app:layout_constraintEnd_toStartOf="@+id/felizButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/malButton"
+        app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
+        app:srcCompat="@drawable/normal" />
 
-<ImageView
-    android:id="@+id/malButton"
-    android:layout_width="59dp"
-    android:layout_height="54dp"
-    android:layout_marginTop="140dp"
-    android:layout_marginBottom="321dp"
-    android:onClick="selecionadoBad"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/normalButton"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
-    app:layout_constraintVertical_bias="0.847"
-    app:srcCompat="@drawable/mal" />
+    <ImageView
+        android:id="@+id/malButton"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="64dp"
+        android:onClick="selecionadoBad"
+        app:layout_constraintEnd_toStartOf="@+id/normalButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
+        app:srcCompat="@drawable/mal" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_nova_tarefa"
@@ -71,7 +62,7 @@ tools:context=".ui.home.HomeFragment">
         android:layout_height="76dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="100dp"
-        android:background="@color/azul"
+        android:background="#32B1A5"
         android:drawableEnd="@drawable/add_circle"
         android:drawablePadding="0dp"
         android:onClick="BotaoAddTarefa"
@@ -89,33 +80,34 @@ tools:context=".ui.home.HomeFragment">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/normalButton"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:layout_marginStart="40dp"
-    android:layout_marginTop="140dp"
-    android:layout_marginEnd="40dp"
-    android:background="@drawable/gradient_verde"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-    <TextView
-        android:id="@+id/dataHoje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center|center_vertical"
-        android:text="Data de hoje"
-        android:textColor="@color/white"
-        android:textSize="22dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="275dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/gradient_verde"
+        app:layout_constraintEnd_toStartOf="@+id/imagemResultado"
+        app:layout_constraintHorizontal_bias="0.387"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/dataHoje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center|center_vertical"
+            android:text="Data de hoje"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

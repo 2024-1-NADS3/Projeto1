@@ -59,4 +59,35 @@ public class TarefasFragment extends Fragment {
         }
         return tarefas;
     }
+
+
+    /*
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            HttpURLConnection connection = null;
+            try {
+                URL url = new URL("https://todolistmongodb-1.onrender.com");
+                connection = (HttpURLConnection) url.openConnection();
+                InputStream in = new BufferedInputStream(connection.getInputStream());
+                String json = readStream(in); // Implemente este método para converter o InputStream em String
+                ArrayList<String> tarefas = parseJSON(json); // Use o método parseJSON que você já tem
+
+                // Atualize a ListView na thread principal
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayAdapter<String> adaptador = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
+                        listaTarefas.setAdapter(adaptador);
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+            }
+        }
+    }).start(); */
 }

@@ -2,14 +2,28 @@ package com.example.mynavigation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Locale;
 import android.widget.Button;
@@ -24,9 +38,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class AdicionarActivity extends AppCompatActivity {
     private EditText nomeTarefa;
-    private Button selectDateButton, adicionarTarefa, definirHorarioButton;
+    private Button selectDateButton, definirHorarioButton, adicionarTarefa;
     private Calendar calendar;
 
     //horario
@@ -92,50 +109,74 @@ public class AdicionarActivity extends AppCompatActivity {
 
             timePickerDialog.show();
         });
-
-        //BOTÃO QUE IRÁ ENVIAR PARA TABELA DO SQLlITE
-        adicionarTarefa.setOnClickListener(v -> {
-
-            try {
-                String novaTarefa = nomeTarefa.getText().toString();
-                if (novaTarefa.isEmpty()) {
-                    // Se estiver vazio exibe um toast
-                    Toast.makeText(AdicionarActivity.this, "O campo Nome da Tarefa não pode estar vazio", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                // Abre ou cria o banco de dados
-                SQLiteDatabase bancoDados = openOrCreateDatabase("CheckList", MODE_PRIVATE, null);
-                bancoDados.execSQL("CREATE TABLE IF NOT EXISTS minhasTarefas2 (id INTEGER PRIMARY KEY AUTOINCREMENT, tarefa VARCHAR, data_hora DATETIME)");
-
-                // data e horário
-                String dataHoraTarefa = calendarioTextView.getText().toString() + " " + horarioTextView.getText().toString();
-
-                // Insere na tabela minhasTarefas
-                bancoDados.execSQL("INSERT INTO minhasTarefas2 (tarefa, data_hora) VALUES('" + novaTarefa + "', '" + dataHoraTarefa + "')");
-
-                // Exibindo no log com comando SELECT sql
-                Cursor cursor = bancoDados.rawQuery("SELECT * FROM minhasTarefas2", null);
-                int indiceColunaID = cursor.getColumnIndex("id");
-                int indiceColunaTarefa = cursor.getColumnIndex("tarefa");
-                int indiceColunaDataHora = cursor.getColumnIndex("data_hora");
-
-                nomeTarefa.setText("");
-                calendarioTextView.setText("");
-                horarioTextView.setText("");
-                finish();
-
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    Log.i("Logx", "ID: " + cursor.getString(indiceColunaID) +
-                            " - Tarefa: " + cursor.getString(indiceColunaTarefa) +
-                            " - Data e Horário: " + cursor.getString(indiceColunaDataHora));
-                    cursor.moveToNext();
-                }
-
-                cursor.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
     }
+
+        public void Cadastrar(View view){
+            String nome = nomeTarefa.getText().toString();
+            Integer idUsuario = 1;
+
+            //captura os dados selecionados de forma separada
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH) + 1;
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            int minute = calendar.get(Calendar.MINUTE);
+            String dataHorario = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00";
+
+            registrarTarefaNoServidor(nome, idUsuario, dataHorario);
+        }
+
+    @SuppressLint("StaticFieldLeak")
+    private void registrarTarefaNoServidor(String nome, Integer idUsuario, String dataHorario) {
+        String url = "https://vq4x7v-3000.csb.app/cadastrarTarefa";
+        JSONObject jsonParams = new JSONObject();
+        try {
+            Log.d("CLIENTE", "Nome: " + nome);
+            Log.d("CLIENTE", "ID do usuário logado: " + idUsuario);
+            Log.d("CLIENTE", "Data e horário: " + dataHorario);
+            jsonParams.put("nome_tarefa", nome);
+            jsonParams.put("id_usuario", idUsuario);
+            jsonParams.put("data_hora", dataHorario);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try {
+                    HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+                    connection.setRequestMethod("POST");
+                    connection.setRequestProperty("Content-Type", "application/json");
+                    connection.setDoOutput(true);
+                    connection.getOutputStream().write(jsonParams.toString().getBytes());
+
+                    int responseCode = connection.getResponseCode();
+                    if (responseCode == HttpURLConnection.HTTP_CREATED) {
+                        runOnUiThread(() -> {
+                            Toast.makeText(AdicionarActivity.this, "Tarefa registrada com sucesso!", Toast.LENGTH_SHORT).show();
+                            nomeTarefa.setText("");
+                            selectDateButton.setText("");
+                            definirHorarioButton.setText("");
+                            adicionarTarefa.setText("");
+                            horarioTextView.setText("");
+                            calendarioTextView.setText("");
+                        });
+                    } else if (responseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
+                        runOnUiThread(() -> Toast.makeText(AdicionarActivity.this, "Erro: Esta tarefa já está registrada.", Toast.LENGTH_SHORT).show());
+                    } else {
+                        runOnUiThread(() -> Toast.makeText(AdicionarActivity.this, "Erro ao registrar tarefa. " + nome + idUsuario + dataHorario, Toast.LENGTH_SHORT).show());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    runOnUiThread(() -> Toast.makeText(AdicionarActivity.this, "Erro na solicitação: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                }
+                return null;
+            }
+        }.execute();
+
+        Intent mudarTela = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mudarTela);
+    }
+
 }

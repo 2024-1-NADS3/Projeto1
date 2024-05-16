@@ -2,123 +2,109 @@ package com.example.mynavigation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-//import com.android.volley.RequestQueue;
-//import com.android.volley.VolleyError;
-//import com.android.volley.Response;
-//import com.android.volley.Request;
-//import com.android.volley.toolbox.JsonArrayRequest;
-//import com.android.volley.toolbox.Volley;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.Response;
+import com.android.volley.Request;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 
 public class cadastro extends AppCompatActivity {
 
-    String url="https://9nflln-3000.csb.app/tudo";
+    private EditText dadoNome;
+    private EditText dadoEmail;
+    private EditText dadoSenha;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-//        filaRequest = Volley.newRequestQueue(this);
-//        dadoNome = findViewById(R.id.nome);
-//        dadoEmail = findViewById(R.id.emailCadastro);
-//        dadoSenha = findViewById(R.id.senhaCadastro);
-//        Intent intent = getIntent();
-//        String dadoCadastro = intent.getStringExtra("dados");
-//        dadoNome.setText(dadoCadastro);
-//        dadoEmail.setText(dadoCadastro);
-//        dadoSenha.setText(dadoCadastro);
-//        Objeto obj = (Objeto)intent.getSerializableExtra("obj");
-//        System.out.println("Aqui1: "+obj.nomeObj);
-//        System.out.println("Aqui1: "+obj.emailObj);
-//        System.out.println("Aqui1: "+obj.senhaObj);
-    }
 
-//    public void GetData(View view){
-//        System.out.println("Entrei Aqui!");
-//        nome = findViewById(R.id.nome);
-//        email = findViewById(R.id.emailCadastro);
-//        senha = findViewById(R.id.senhaCadastro);
-//
-//        JsonArrayRequest arrReq = new JsonArrayRequest(Request.Method.GET, url,null,
-//                new Response.Listener<JSONArray>() {
-//                    @Override
-//                    public void onResponse(JSONArray response) {
-//                        if (response.length() > 0) {
-//                            for (int i = 0; i < response.length(); i++) {
-//                                try {
-//                                    JSONObject jsonObj = response.getJSONObject(i);
-//                                    String nomeJ = jsonObj.get("nome").toString();
-//                                    String emailJ = jsonObj.get("email").toString();
-//                                    String senhaJ = jsonObj.get("senha").toString();
-//                                    Log.d("Dados ","Nome: " +nomeJ +" E-mail: "+emailJ+" Senha: "+senhaJ);
-//                                    nome.setText(nomeJ);
-//                                    email.setText(emailJ);
-//                                    senha.setText(senhaJ);
-//                                } catch (JSONException e) {
-//                                    Log.e("Volley", "Erro no JSON");
-//                                    //System.out.println("Erro no JSON");
-//                                }
-//
-//                            }
-//                        } else {
-//                            Log.e("Data","Sem Dados");
-//                            //System.out.println("Sem Dados");
-//                        }
-//
-//                    }
-//                },
-//
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e("Volley", error.toString());
-//                        //System.out.println(error.toString());
-//                    }
-//                });
-//        filaRequest.add(arrReq);
-//    }
-
-    public void Cadastrar(View view){
-        TextView campoNome;
-        TextView campoEmail;
-        TextView campoSenha;
-        String nome;
-        String email;
-        String senha;
-
-        campoNome = findViewById(R.id.nome);
-        campoEmail = findViewById(R.id.emailCadastro);
-        campoSenha = findViewById(R.id.senhaCadastro);
-        nome = campoNome.getText().toString();
-        email = campoEmail.getText().toString();
-        senha = campoSenha.getText().toString();
-
-        campoNome = findViewById(R.id.nome);
-        campoEmail = findViewById(R.id.emailCadastro);
-        campoSenha = findViewById(R.id.senhaCadastro);
-        nome = campoNome.getText().toString();
-        email = campoEmail.getText().toString();
-        senha = campoSenha.getText().toString();
-
-        ClasseCadastro cadastro1 = new ClasseCadastro(nome, email, senha);
-
-        Intent mudarTela2 = new Intent(getApplicationContext(), login.class);
-        mudarTela2.putExtra("objeto1", (CharSequence) cadastro1);
-        startActivity(mudarTela2);
-
+        dadoNome = findViewById(R.id.nome);
+        dadoEmail = findViewById(R.id.emailCadastro);
+        dadoSenha = findViewById(R.id.senhaCadastro);
     }
 
     public void BotaoLogin (View view)
     {
         Intent mudarTela = new Intent(getApplicationContext(), login.class);
         startActivity(mudarTela);
+    }
+
+    public void Cadastrar(View view){
+        String nome = dadoNome.getText().toString();
+        String email = dadoEmail.getText().toString();
+        String senha = dadoSenha.getText().toString();
+
+        if (nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {
+            Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        registrarUsuarioNoServidor(nome, email, senha);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private void registrarUsuarioNoServidor(String nome, String email, String senha) {
+        String url = "https://vq4x7v-3000.csb.app/cadastrarUsuario";
+        JSONObject jsonParams = new JSONObject();
+        try {
+            Log.d("CLIENTE", "Nome: " + nome);
+            Log.d("CLIENTE", "Email: " + email);
+            Log.d("CLIENTE", "Senha: " + senha);
+            jsonParams.put("nome", nome);
+            jsonParams.put("email", email);
+            jsonParams.put("senha", senha);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try {
+                    HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+                    connection.setRequestMethod("POST");
+                    connection.setRequestProperty("Content-Type", "application/json");
+                    connection.setDoOutput(true);
+                    connection.getOutputStream().write(jsonParams.toString().getBytes());
+
+                    int responseCode = connection.getResponseCode();
+                    if (responseCode == HttpURLConnection.HTTP_CREATED) {
+                        runOnUiThread(() -> {
+                            Toast.makeText(cadastro.this, "Usuário registrado com sucesso!", Toast.LENGTH_SHORT).show();
+                            dadoNome.setText("");
+                            dadoEmail.setText("");
+                            dadoSenha.setText("");
+                        });
+                    } else if (responseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
+                        runOnUiThread(() -> Toast.makeText(cadastro.this, "Erro: Este e-mail já está registrado.", Toast.LENGTH_SHORT).show());
+                    } else {
+                        runOnUiThread(() -> Toast.makeText(cadastro.this, "Erro ao registrar usuário", Toast.LENGTH_SHORT).show());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    runOnUiThread(() -> Toast.makeText(cadastro.this, "Erro na solicitação: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                }
+                return null;
+            }
+        }.execute();
     }
 }

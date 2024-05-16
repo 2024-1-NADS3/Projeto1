@@ -1,5 +1,6 @@
 package com.example.mynavigation.ui.tarefas;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class TarefasFragment extends Fragment {
@@ -24,7 +32,7 @@ public class TarefasFragment extends Fragment {
 
     private ListView listaTarefas;
     private Button buttonRecuperar;
-    private TextView itemtarefas;
+    private TextView itemTarefas;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,6 +41,7 @@ public class TarefasFragment extends Fragment {
 
         listaTarefas = view.findViewById(R.id.listaTarefas);
         buttonRecuperar = view.findViewById(R.id.buttonRecuperar);
+        itemTarefas = view.findViewById(R.id.textView5);
 
             // Parse do novo JSON e extrair as tarefas
             String json = "[{\"id\":1,\"id_usuario\":1,\"nome_tarefa\":\"teste\",\"data_hora\":\"2024-05-09 23:00:00\"}," +
@@ -46,13 +55,15 @@ public class TarefasFragment extends Fragment {
             ArrayAdapter<String> adaptador = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
             listaTarefas.setAdapter(adaptador);
 
-            // Definindo o OnClickListener para o botão de recuperação (caso necessário)
-            buttonRecuperar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Aqui você pode adicionar lógica para atualizar a lista ou buscar novos dados
-                }
-            });
+
+        buttonRecuperar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyTasks task = new MyTasks();
+                String urlApi = "https://vq4x7v-3000.csb.app/buscarTarefas";
+                task.execute(urlApi);
+            }
+        });
 
             return view;
         }
@@ -72,36 +83,55 @@ public class TarefasFragment extends Fragment {
             }
             return tarefas;
         }
+
+
+
+    class MyTasks extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String stringUrl = strings[0];
+            StringBuilder result = new StringBuilder();
+
+            try {
+                URL url = new URL(stringUrl);
+                HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = conexao.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader reader = new BufferedReader(inputStreamReader);
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
+                }
+
+                reader.close();
+                inputStreamReader.close();
+                inputStream.close();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String resultado) {
+            super.onPostExecute(resultado);
+            itemTarefas.setText(resultado);
+        }
     }
 
 
-    /*
-    new Thread(new Runnable() {
-        @Override
-        public void run() {
-            HttpURLConnection connection = null;
-            try {
-                URL url = new URL("https://todolistmongodb-1.onrender.com");
-                connection = (HttpURLConnection) url.openConnection();
-                InputStream in = new BufferedInputStream(connection.getInputStream());
-                String json = readStream(in); // Implemente este método para converter o InputStream em String
-                ArrayList<String> tarefas = parseJSON(json); // Use o método parseJSON que você já tem
 
-                // Atualize a ListView na thread principal
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ArrayAdapter<String> adaptador = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
-                        listaTarefas.setAdapter(adaptador);
-                    }
-                });
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (connection != null) {
-                    connection.disconnect();
-                }
-            }
-        }
-    }).start(); */
+}
+
+
 

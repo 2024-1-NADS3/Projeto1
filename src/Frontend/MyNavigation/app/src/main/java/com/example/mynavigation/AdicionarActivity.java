@@ -115,6 +115,12 @@ public class AdicionarActivity extends AppCompatActivity {
             String nome = nomeTarefa.getText().toString();
             Integer idUsuario = 1;
 
+            // Verificar se o campo de nome da tarefa está vazio
+            if (nome.isEmpty()) {
+                Toast.makeText(this, "O campo de nome da tarefa não pode estar vazio.", Toast.LENGTH_SHORT).show();
+                return; // Interrompe o processo de cadastro se o campo estiver vazio
+            }
+
             //captura os dados selecionados de forma separada
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH) + 1;

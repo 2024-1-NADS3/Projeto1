@@ -43,19 +43,6 @@ public class TarefasFragment extends Fragment {
         buttonRecuperar = view.findViewById(R.id.buttonRecuperar);
         itemTarefas = view.findViewById(R.id.textView5);
 
-            // Parse do novo JSON e extrair as tarefas
-            String json = "[{\"id\":1,\"id_usuario\":1,\"nome_tarefa\":\"teste\",\"data_hora\":\"2024-05-09 23:00:00\"}," +
-                    "{\"id\":2,\"id_usuario\":4,\"nome_tarefa\":\"Tarefa do Carlos\",\"data_hora\":\"2024-05-12 08:00:00\"}," +
-                    "{\"id\":3,\"id_usuario\":1,\"nome_tarefa\":\"SAS\",\"data_hora\":\"2024-05-12 23:00:00\"}," +
-                    "{\"id\":4,\"id_usuario\":1,\"nome_tarefa\":\"agoraVAi\",\"data_hora\":\"2024-05-16 00:23:55\"}," +
-                    "{\"id\":14,\"id_usuario\":1,\"nome_tarefa\":\"Estudar\",\"data_hora\":\"2024-5-16 19:30:00\"}]";
-            ArrayList<String> tarefas = parseJSON(json);
-
-            // Atualizar o ArrayAdapter
-            ArrayAdapter<String> adaptador = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tarefas);
-            listaTarefas.setAdapter(adaptador);
-
-
         buttonRecuperar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,21 +55,22 @@ public class TarefasFragment extends Fragment {
             return view;
         }
 
-        // Método para analisar o JSON e extrair as tarefas
-        private ArrayList<String> parseJSON(String json) {
-            ArrayList<String> tarefas = new ArrayList<>();
-            try {
-                JSONArray jsonArray = new JSONArray(json);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject taskObj = jsonArray.getJSONObject(i);
-                    String nomeTarefa = taskObj.getString("nome_tarefa");
-                    tarefas.add(nomeTarefa);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
+
+    // Método para fazer o parse do JSON e extrair os nomes das tarefas
+    private ArrayList<String> parseJSON(String json) {
+        ArrayList<String> listaDeTarefas = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String nomeTarefa = jsonObject.getString("nome_tarefa");
+                listaDeTarefas.add(nomeTarefa);
             }
-            return tarefas;
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        return listaDeTarefas;
+    }
 
 
 
@@ -125,7 +113,19 @@ public class TarefasFragment extends Fragment {
         @Override
         protected void onPostExecute(String resultado) {
             super.onPostExecute(resultado);
-            itemTarefas.setText(resultado);
+
+            // Parse do resultado JSON para uma lista de tarefas
+            ArrayList<String> tarefas = parseJSON(resultado);
+
+            // Criação de um novo ArrayAdapter com os dados recebidos
+            ArrayAdapter<String> adaptador = new ArrayAdapter<>(
+                    getActivity(),
+                    android.R.layout.simple_list_item_1,
+                    tarefas
+            );
+
+            // Atualização da ListView com o novo adaptador
+            listaTarefas.setAdapter(adaptador);
         }
     }
 

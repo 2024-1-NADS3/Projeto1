@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 
 import com.example.mynavigation.R;
 import com.example.mynavigation.databinding.FragmentHomeBinding;
+import com.example.mynavigation.humor.AppPreferences;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,7 +28,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)  {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -61,8 +62,25 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        ImageView imagemResultado = binding.imagemResultado;
+        String estadoAtual = AppPreferences.getInstance(requireContext()).getSelectedOption();
+        switch (estadoAtual) {
+            case "bad":
+                imagemResultado.setImageResource(R.drawable.mal);
+                break;
+            case "normal":
+                imagemResultado.setImageResource(R.drawable.normal);
+                break;
+            case "happy":
+                imagemResultado.setImageResource(R.drawable.feliz);
+                break;
+        }
+
         return root;
     }
+
+
+    
 
     @Override
     public void onDestroyView() {
@@ -84,8 +102,8 @@ public class HomeFragment extends Fragment {
                 imagemResultado.setImageResource(R.drawable.feliz);
                 break;
         }
+        AppPreferences.getInstance(requireContext()).setSelectedOption(opcaoSelecionada);
 
-        Log.d("HomeFragment", "Item selecionado: " + opcaoSelecionada);
     }
 }
 

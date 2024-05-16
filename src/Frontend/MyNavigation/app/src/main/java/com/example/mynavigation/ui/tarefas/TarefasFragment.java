@@ -11,8 +11,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import com.example.mynavigation.R;
 
+import com.example.mynavigation.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +29,6 @@ import java.util.ArrayList;
 
 public class TarefasFragment extends Fragment {
 
-
     private ListView listaTarefas;
     private Button buttonRecuperar;
     private TextView itemTarefas;
@@ -40,23 +39,18 @@ public class TarefasFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tarefas, container, false);
 
         listaTarefas = view.findViewById(R.id.listaTarefas);
-        buttonRecuperar = view.findViewById(R.id.buttonRecuperar);
         itemTarefas = view.findViewById(R.id.textView5);
 
-        buttonRecuperar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MyTasks task = new MyTasks();
-                String urlApi = "https://vq4x7v-3000.csb.app/buscarTarefas";
-                task.execute(urlApi);
-            }
-        });
-
-            return view;
-        }
+        // Carregar o ao entrar na tela
+        MyTasks task = new MyTasks();
+        String urlApi = "https://vq4x7v-3000.csb.app/buscarTarefas";
+        task.execute(urlApi);
 
 
-    // Método para fazer o parse do JSON e extrair os nomes das tarefas
+        return view;
+    }
+
+    // extraind os nomes das tarefas
     private ArrayList<String> parseJSON(String json) {
         ArrayList<String> listaDeTarefas = new ArrayList<>();
         try {
@@ -71,8 +65,6 @@ public class TarefasFragment extends Fragment {
         }
         return listaDeTarefas;
     }
-
-
 
     class MyTasks extends AsyncTask<String, Void, String> {
         @Override
@@ -128,10 +120,4 @@ public class TarefasFragment extends Fragment {
             listaTarefas.setAdapter(adaptador);
         }
     }
-
-
-
 }
-
-
-

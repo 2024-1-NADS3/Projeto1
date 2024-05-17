@@ -53,25 +53,28 @@ public class cadastro extends AppCompatActivity {
         String nome = dadoNome.getText().toString();
         String email = dadoEmail.getText().toString();
         String senha = dadoSenha.getText().toString();
+        Integer humor = 1;
 
         if (nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
         }
-        registrarUsuarioNoServidor(nome, email, senha);
+        registrarUsuarioNoServidor(nome, email, senha, humor);
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void registrarUsuarioNoServidor(String nome, String email, String senha) {
+    private void registrarUsuarioNoServidor(String nome, String email, String senha, Integer humor) {
         String url = "https://vq4x7v-3000.csb.app/cadastrarUsuario";
         JSONObject jsonParams = new JSONObject();
         try {
             Log.d("CLIENTE", "Nome: " + nome);
             Log.d("CLIENTE", "Email: " + email);
             Log.d("CLIENTE", "Senha: " + senha);
+            Log.d("CLIENTE", "Humor: " + humor);
             jsonParams.put("nome", nome);
             jsonParams.put("email", email);
             jsonParams.put("senha", senha);
+            jsonParams.put("humor", humor);
         } catch (JSONException e) {
             e.printStackTrace();
         }

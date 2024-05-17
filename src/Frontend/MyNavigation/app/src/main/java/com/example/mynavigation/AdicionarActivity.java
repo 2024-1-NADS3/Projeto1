@@ -128,21 +128,24 @@ public class AdicionarActivity extends AppCompatActivity {
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
             int minute = calendar.get(Calendar.MINUTE);
             String dataHorario = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00";
+            Integer status = 1;
 
-            registrarTarefaNoServidor(nome, idUsuario, dataHorario);
+            registrarTarefaNoServidor(nome, idUsuario, dataHorario, status);
         }
 
     @SuppressLint("StaticFieldLeak")
-    private void registrarTarefaNoServidor(String nome, Integer idUsuario, String dataHorario) {
+    private void registrarTarefaNoServidor(String nome, Integer idUsuario, String dataHorario, Integer status) {
         String url = "https://vq4x7v-3000.csb.app/cadastrarTarefa";
         JSONObject jsonParams = new JSONObject();
         try {
             Log.d("CLIENTE", "Nome: " + nome);
             Log.d("CLIENTE", "ID do usuário logado: " + idUsuario);
             Log.d("CLIENTE", "Data e horário: " + dataHorario);
+            Log.d("CLIENTE", "Status: " + status);
             jsonParams.put("nome_tarefa", nome);
             jsonParams.put("id_usuario", idUsuario);
             jsonParams.put("data_hora", dataHorario);
+            jsonParams.put("status", status);
         } catch (JSONException e) {
             e.printStackTrace();
         }

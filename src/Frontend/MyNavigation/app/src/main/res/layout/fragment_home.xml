@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,72 +8,25 @@
     tools:context=".ui.home.HomeFragment">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
+    <ListView
+        android:id="@+id/listaTarefas"
+        android:layout_width="361dp"
+        android:layout_height="172dp"
+        android:layout_marginStart="33dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="31dp"
-        android:src="@drawable/user_circle"
+        android:layout_marginEnd="33dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imagemResultado"
-        android:layout_width="27dp"
-        android:layout_height="23dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093"
-        app:srcCompat="@drawable/neutro" />
-
-    <ImageView
-        android:id="@+id/felizButton"
-        android:layout_width="56dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="35dp"
-        android:onClick="selecionadoHappy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/normalButton"
-        app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
-        app:srcCompat="@drawable/feliz" />
-
-    <ImageView
-        android:id="@+id/normalButton"
-        android:layout_width="76dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="35dp"
-        android:onClick="selecionadoNormal"
-        app:layout_constraintEnd_toStartOf="@+id/felizButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/malButton"
-        app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
-        app:srcCompat="@drawable/normal" />
-
-    <ImageView
-        android:id="@+id/malButton"
-        android:layout_width="59dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="35dp"
-        android:onClick="selecionadoBad"
-        app:layout_constraintEnd_toStartOf="@+id/normalButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagemResultado"
-        app:srcCompat="@drawable/mal" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_nova_tarefa"
         android:layout_width="329dp"
         android:layout_height="76dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="16dp"
         android:background="#32B1A5"
         android:drawableEnd="@drawable/add_circle"
         android:drawablePadding="0dp"
@@ -86,18 +40,81 @@
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintCircleRadius="?attr/dialogCornerRadius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/normalButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/listaTarefas" />
+
+    <ImageView
+        android:id="@+id/malButton"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="12dp"
+        android:onClick="selecionadoBad"
+        app:layout_constraintEnd_toStartOf="@+id/normalButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:srcCompat="@drawable/mal"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imagemResultado"
+        android:layout_width="27dp"
+        android:layout_height="23dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.055"
+        app:srcCompat="@drawable/neutro" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Lembre de fazer suas tarefas"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="33dp"
+        android:src="@drawable/user_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Como você está?"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_nova_tarefa" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="272dp"
         android:layout_height="54dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/gradient_verde"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -118,78 +135,39 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/overviewContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="30dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-41dp">
-
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Clear Sky"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/temp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-thin"
-            android:text="29°C"
-            android:textSize="90dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/temp_min"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Min Temp: 05:05 AM" />
-
-            <Space
-                android:layout_width="50dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/temp_max"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Max Temp: 05:05 PM" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/listaTarefas"
-        android:layout_width="361dp"
-        android:layout_height="172dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="33dp"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
+    <ImageView
+        android:id="@+id/felizButton"
+        android:layout_width="56dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
+        android:onClick="selecionadoHappy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_nova_tarefa" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/normalButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:srcCompat="@drawable/feliz" />
+
+    <ImageView
+        android:id="@+id/normalButton"
+        android:layout_width="76dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="12dp"
+        android:onClick="selecionadoNormal"
+        app:layout_constraintEnd_toStartOf="@+id/felizButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/malButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:srcCompat="@drawable/normal"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnNot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        app:layout_constraintTop_toBottomOf="@+id/listaTarefas"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

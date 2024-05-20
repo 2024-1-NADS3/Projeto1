@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,14 +39,19 @@ public class TarefasFragment extends Fragment {
     private Adapter adapter;
 
     private RecyclerView listaTarefas2;
+    private ProgressBar progressBar;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tarefas, container, false);
 
-        listaTarefas2 = view.findViewById(R.id.listaTarefas2);
+        progressBar = view.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
+        listaTarefas2 = view.findViewById(R.id.listaTarefas2);
 
         adapter = new Adapter(new ArrayList<>());
         listaTarefas2.setAdapter(adapter);
@@ -137,7 +143,8 @@ public class TarefasFragment extends Fragment {
             Adapter adapter = new Adapter(tarefas2);
             listaTarefas2.setAdapter(adapter);
 
-
+            //Fim do carregameno
+            progressBar.setVisibility(View.GONE);
 
 
         }

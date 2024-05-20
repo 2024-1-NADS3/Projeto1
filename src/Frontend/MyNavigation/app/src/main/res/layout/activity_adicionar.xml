@@ -65,7 +65,9 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="5dp"
         android:orientation="vertical"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,9 +91,39 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="Adicione uma tarefa"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp"
+        android:text="Adicione uma tarefa:"
+        android:textColor="@color/azul_escuro"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginBottom="8dp"
+        android:text="Defina uma data"
+        android:textColor="@color/azul_escuro"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/selecionarData"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginBottom="8dp"
+        android:text="Defina um horário"
+        android:textColor="@color/azul_escuro"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/definirHorario"
         app:layout_constraintStart_toStartOf="parent" />
 
 

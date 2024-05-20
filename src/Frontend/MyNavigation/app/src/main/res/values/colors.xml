@@ -13,4 +13,5 @@
 
     //indicator color
     <color name="inactive">#C4C4C4</color>
+    <color name="azul_escuro">#020C24</color>
 </resources>

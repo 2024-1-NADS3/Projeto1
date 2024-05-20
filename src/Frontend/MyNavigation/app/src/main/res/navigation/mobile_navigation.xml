@@ -19,16 +19,22 @@
         tools:layout="@layout/fragment_tarefas" />
 
     <fragment
-        android:id="@+id/navigation_adicionar"
-        android:name="com.example.mynavigation.ui.adicionar.AdicionarFragment"
-        android:label="Nova Tarefa"
-        tools:layout="@layout/fragment_adicionar" />
-
+        android:id="@+id/navigation_tarefasatrasadas"
+        android:name="com.example.mynavigation.ui.tarefasAtrasadas.TarefasAtrasadasFragment"
+        android:label="Tarefas Atrasadas"
+        tools:layout="@layout/fragment_tarefasatrasadas" />
+    <fragment
+        android:id="@+id/navigation_progresso"
+        android:name="com.example.mynavigation.ui.progresso.ProgressoFragment"
+        android:label="Progresso"
+        tools:layout="@layout/fragment_progresso" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.mynavigation.ui.notifications.NotificationsFragment"
         android:label="Perfil"
         tools:layout="@layout/fragment_notifications" />
+
+
 
 </navigation>

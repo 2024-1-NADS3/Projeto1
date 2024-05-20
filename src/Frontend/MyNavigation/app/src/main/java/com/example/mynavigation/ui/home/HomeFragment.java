@@ -1,10 +1,13 @@
 package com.example.mynavigation.ui.home;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
 import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,11 +45,11 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class HomeFragment extends Fragment {
+    String CHANNEL_ID = "meu_canal";
 
     private FragmentHomeBinding binding;
     private ListView listaTarefas;
     private static final int REQUEST_CODE_POST_NOTIFICATIONS = 1;
-    private static final String CHANNEL_ID = "task_notifications";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,6 +71,8 @@ public class HomeFragment extends Fragment {
         String dataAtualText = sdf.format(Calendar.getInstance().getTime());
         dataHoje.setText(dataAtualText);
 
+
+        //Humor
         binding.malButton.setOnClickListener(v -> opcaoSelecionada("bad"));
 
         binding.normalButton.setOnClickListener(v -> opcaoSelecionada("normal"));
@@ -92,10 +97,9 @@ public class HomeFragment extends Fragment {
         btnNoti.setOnClickListener(v -> {
             // Verificar permissão antes de criar a notificação
             if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                // Solicitar permissão
                 requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_CODE_POST_NOTIFICATIONS);
             } else {
-                // Criar a notificação
+                // Cria a notificação
                 makeNotification();
             }
         });
@@ -192,6 +196,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void makeNotification() {
+        createNotificationChannel();
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.alert_tarefa_24)
@@ -204,6 +209,21 @@ public class HomeFragment extends Fragment {
             return;
         }
         notificationManager.notify(1, builder.build());
+    }
+
+    private void createNotificationChannel() {
+        // Criação do canal de notificação
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            CharSequence name = "Task Notification";
+            String description = "Channel for task notifications";
+            int importance = NotificationManagerCompat.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_MIN);
+            channel.setDescription(description);
+
+            // Registra o canal no sistema; não pode ser alterado depois que está registrado
+            NotificationManager notificationManager = requireContext().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
 

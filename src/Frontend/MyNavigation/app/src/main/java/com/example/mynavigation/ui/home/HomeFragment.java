@@ -1,17 +1,23 @@
 package com.example.mynavigation.ui.home;
 
-import android.content.Intent;
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -35,141 +41,170 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+public class HomeFragment extends Fragment {
 
+    private FragmentHomeBinding binding;
+    private ListView listaTarefas;
+    private static final int REQUEST_CODE_POST_NOTIFICATIONS = 1;
+    private static final String CHANNEL_ID = "task_notifications";
 
-    public class HomeFragment extends Fragment {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
 
-        private FragmentHomeBinding binding;
-        private ListView listaTarefas;
+        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+
+        listaTarefas = root.findViewById(R.id.listaTarefas);
+
+        // Carregar os dados ao entrar na tela
+        MyTasks task = new MyTasks();
+        String urlApi = "https://vq4x7v-3000.csb.app/buscarTarefas";
+        task.execute(urlApi);
+
+        // Configurando a data atual
+        TextView dataHoje = binding.dataHoje;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("pt", "BR"));
+        String dataAtualText = sdf.format(Calendar.getInstance().getTime());
+        dataHoje.setText(dataAtualText);
+
+        binding.malButton.setOnClickListener(v -> opcaoSelecionada("bad"));
+
+        binding.normalButton.setOnClickListener(v -> opcaoSelecionada("normal"));
+
+        binding.felizButton.setOnClickListener(v -> opcaoSelecionada("happy"));
+
+        ImageView imagemResultado = binding.imagemResultado;
+        String estadoAtual = AppPreferences.getInstance(requireContext()).getSelectedOption();
+        switch (estadoAtual) {
+            case "bad":
+                imagemResultado.setImageResource(R.drawable.mal);
+                break;
+            case "normal":
+                imagemResultado.setImageResource(R.drawable.normal);
+                break;
+            case "happy":
+                imagemResultado.setImageResource(R.drawable.feliz);
+                break;
+        }
+
+        Button btnNoti = root.findViewById(R.id.btnNot);
+        btnNoti.setOnClickListener(v -> {
+            // Verificar permissão antes de criar a notificação
+            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                // Solicitar permissão
+                requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_CODE_POST_NOTIFICATIONS);
+            } else {
+                // Criar a notificação
+                makeNotification();
+            }
+        });
+
+        return root;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    private void opcaoSelecionada(String opcaoSelecionada) {
+        ImageView imagemResultado = binding.imagemResultado;
+
+        switch (opcaoSelecionada) {
+            case "bad":
+                imagemResultado.setImageResource(R.drawable.mal);
+                break;
+            case "normal":
+                imagemResultado.setImageResource(R.drawable.normal);
+                break;
+            case "happy":
+                imagemResultado.setImageResource(R.drawable.feliz);
+                break;
+        }
+        AppPreferences.getInstance(requireContext()).setSelectedOption(opcaoSelecionada);
+    }
+
+    private ArrayList<String> parseJSON(String json) {
+        ArrayList<String> listaDeTarefas = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String nomeTarefa = jsonObject.getString("nome_tarefa");
+                listaDeTarefas.add(nomeTarefa);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return listaDeTarefas;
+    }
+
+    class MyTasks extends AsyncTask<String, Void, String> {
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            binding = FragmentHomeBinding.inflate(inflater, container, false);
-            View root = binding.getRoot();
-
-            HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-
-            listaTarefas = root.findViewById(R.id.listaTarefas);
-
-            // Carregar os dados ao entrar na tela
-            MyTasks task = new MyTasks();
-            String urlApi = "https://vq4x7v-3000.csb.app/buscarTarefas";
-            task.execute(urlApi);
-
-            // Configurando a data atual
-            TextView dataHoje = binding.dataHoje;
-            SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("pt", "BR"));
-            String dataAtualText = sdf.format(Calendar.getInstance().getTime());
-            dataHoje.setText(dataAtualText);
-
-            binding.malButton.setOnClickListener(v -> opcaoSelecionada("bad"));
-
-            binding.normalButton.setOnClickListener(v -> opcaoSelecionada("normal"));
-
-            binding.felizButton.setOnClickListener(v -> opcaoSelecionada("happy"));
-
-            ImageView imagemResultado = binding.imagemResultado;
-            String estadoAtual = AppPreferences.getInstance(requireContext()).getSelectedOption();
-            switch (estadoAtual) {
-                case "bad":
-                    imagemResultado.setImageResource(R.drawable.mal);
-                    break;
-                case "normal":
-                    imagemResultado.setImageResource(R.drawable.normal);
-                    break;
-                case "happy":
-                    imagemResultado.setImageResource(R.drawable.feliz);
-                    break;
-            }
-
-            return root;
+        protected void onPreExecute() {
+            super.onPreExecute();
         }
 
         @Override
-        public void onDestroyView() {
-            super.onDestroyView();
-            binding = null;
-        }
+        protected String doInBackground(String... strings) {
+            String stringUrl = strings[0];
+            StringBuilder result = new StringBuilder();
 
-        private void opcaoSelecionada(String opcaoSelecionada) {
-            ImageView imagemResultado = binding.imagemResultado;
-
-            switch (opcaoSelecionada) {
-                case "bad":
-                    imagemResultado.setImageResource(R.drawable.mal);
-                    break;
-                case "normal":
-                    imagemResultado.setImageResource(R.drawable.normal);
-                    break;
-                case "happy":
-                    imagemResultado.setImageResource(R.drawable.feliz);
-                    break;
-            }
-            AppPreferences.getInstance(requireContext()).setSelectedOption(opcaoSelecionada);
-        }
-
-        private ArrayList<String> parseJSON(String json) {
-            ArrayList<String> listaDeTarefas = new ArrayList<>();
             try {
-                JSONArray jsonArray = new JSONArray(json);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    String nomeTarefa = jsonObject.getString("nome_tarefa");
-                    listaDeTarefas.add(nomeTarefa);
+                URL url = new URL(stringUrl);
+                HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = conexao.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader reader = new BufferedReader(inputStreamReader);
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
                 }
-            } catch (JSONException e) {
+
+                reader.close();
+                inputStreamReader.close();
+                inputStream.close();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-            return listaDeTarefas;
+
+            return result.toString();
         }
 
-        class MyTasks extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPostExecute(String resultado) {
+            super.onPostExecute(resultado);
+            ArrayList<String> tarefas = parseJSON(resultado);
+            ArrayAdapter<String> adaptador = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_list_item_1,
+                    tarefas);
 
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected String doInBackground(String... strings) {
-                String stringUrl = strings[0];
-                StringBuilder result = new StringBuilder();
-
-                try {
-                    URL url = new URL(stringUrl);
-                    HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
-                    InputStream inputStream = conexao.getInputStream();
-                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                    BufferedReader reader = new BufferedReader(inputStreamReader);
-
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                    }
-
-                    reader.close();
-                    inputStreamReader.close();
-                    inputStream.close();
-
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                return result.toString();
-            }
-
-            @Override
-            protected void onPostExecute(String resultado) {
-                super.onPostExecute(resultado);
-                ArrayList<String> tarefas = parseJSON(resultado);
-                ArrayAdapter<String> adaptador = new ArrayAdapter<>(getActivity(),
-                        android.R.layout.simple_list_item_1,
-                        tarefas);
-
-                // Atualização da ListView com o novo adaptador
-                listaTarefas.setAdapter(adaptador);
-            }
+            // Atualização da ListView com adaptador
+            listaTarefas.setAdapter(adaptador);
         }
     }
+
+    public void makeNotification() {
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+                .setSmallIcon(R.drawable.alert_tarefa_24)
+                .setContentTitle("Lembre-se de fazer suas tarefas")
+                .setContentText("Isso é uma notificação de exemplo")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        notificationManager.notify(1, builder.build());
+    }
+
+
+}

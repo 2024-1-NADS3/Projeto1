@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.mynavigation.ui.notifications.NotificationsFragment"
+        android:name="com.example.mynavigation.ui.perfil.PerfilFragment"
         android:label="Perfil"
         tools:layout="@layout/fragment_notifications" />
 

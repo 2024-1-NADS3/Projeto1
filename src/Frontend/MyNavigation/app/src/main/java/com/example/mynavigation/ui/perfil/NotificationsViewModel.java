@@ -1,4 +1,4 @@
-package com.example.mynavigation.ui.notifications;
+package com.example.mynavigation.ui.perfil;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

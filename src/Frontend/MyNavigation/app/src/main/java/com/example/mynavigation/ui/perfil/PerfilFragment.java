@@ -1,4 +1,4 @@
-package com.example.mynavigation.ui.notifications;
+package com.example.mynavigation.ui.perfil;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.mynavigation.databinding.FragmentNotificationsBinding;
 
-public class NotificationsFragment extends Fragment {
+public class PerfilFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
 

@@ -35,6 +35,7 @@ public class TarefasFragment extends Fragment {
 
     private ListView listaTarefas;
     private Button buttonRecuperar;
+    private int idUsuario = 1;
 
     private Adapter adapter;
 
@@ -66,7 +67,7 @@ public class TarefasFragment extends Fragment {
 
         // Carregar o ao entrar na tela
         MyTasks task = new MyTasks();
-        String urlApi = "https://vq4x7v-3000.csb.app/buscarTarefas";
+        String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
         task.execute(urlApi);
 
 

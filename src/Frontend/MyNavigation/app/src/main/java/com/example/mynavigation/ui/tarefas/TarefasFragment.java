@@ -8,11 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynavigation.R;
+import com.example.mynavigation.ui.adapter.Adapter;
+import com.example.mynavigation.ui.adapter.Tarefa;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,15 +34,29 @@ public class TarefasFragment extends Fragment {
 
     private ListView listaTarefas;
     private Button buttonRecuperar;
-    private TextView itemTarefas;
+
+    private Adapter adapter;
+
+    private RecyclerView listaTarefas2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tarefas, container, false);
 
-        listaTarefas = view.findViewById(R.id.listaTarefas);
-        itemTarefas = view.findViewById(R.id.textView5);
+        listaTarefas2 = view.findViewById(R.id.listaTarefas2);
+
+
+        adapter = new Adapter(new ArrayList<>());
+        listaTarefas2.setAdapter(adapter);
+
+        //Configurando p RecyclerView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        listaTarefas2.setLayoutManager(layoutManager);
+        listaTarefas2.setHasFixedSize(true);
+
+
+
 
         // Carregar o ao entrar na tela
         MyTasks task = new MyTasks();
@@ -50,15 +67,20 @@ public class TarefasFragment extends Fragment {
         return view;
     }
 
-    // extraind os nomes das tarefas
-    private ArrayList<String> parseJSON(String json) {
-        ArrayList<String> listaDeTarefas = new ArrayList<>();
+
+    //recycler
+    private ArrayList<Tarefa> parseJSON(String json) {
+        ArrayList<Tarefa> listaDeTarefas = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(json);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String nomeTarefa = jsonObject.getString("nome_tarefa");
-                listaDeTarefas.add(nomeTarefa);
+                String dataHora = jsonObject.getString("data_hora");
+                Tarefa tarefa = new Tarefa();
+                tarefa.setNomeTarefa(nomeTarefa);
+                tarefa.setDataHora(dataHora);
+                listaDeTarefas.add(tarefa);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -107,17 +129,17 @@ public class TarefasFragment extends Fragment {
             super.onPostExecute(resultado);
 
             // Parse do resultado JSON para uma lista de tarefas
-            ArrayList<String> tarefas = parseJSON(resultado);
+            ArrayList<Tarefa> tarefas2 = parseJSON(resultado);
 
-            // Criação de um novo ArrayAdapter com os dados recebidos
-            ArrayAdapter<String> adaptador = new ArrayAdapter<>(
-                    getActivity(),
-                    android.R.layout.simple_list_item_1,
-                    tarefas
-            );
+            // Parse do resultado JSON para uma lista de tarefas
+            //ArrayList<String> tarefas = parseJSON(resultado);
 
-            // Atualização da ListView com o novo adaptador
-            listaTarefas.setAdapter(adaptador);
+            Adapter adapter = new Adapter(tarefas2);
+            listaTarefas2.setAdapter(adapter);
+
+
+
+
         }
     }
 }

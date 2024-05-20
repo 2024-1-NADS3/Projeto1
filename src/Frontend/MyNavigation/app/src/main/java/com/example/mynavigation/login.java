@@ -38,7 +38,6 @@ public class login extends AppCompatActivity {
     public void Login(View view){
         String email = dadoEmail.getText().toString();
         String senha = dadoSenha.getText().toString();
-        Integer humor = 1;
 
         if (email.isEmpty() || senha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
@@ -71,16 +70,16 @@ public class login extends AppCompatActivity {
                     connection.getOutputStream().write(jsonParams.toString().getBytes());
 
                     int responseCode = connection.getResponseCode();
-                    if (responseCode == HttpURLConnection.HTTP_CREATED) {
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
                         runOnUiThread(() -> {
-                            Toast.makeText(login.this, "Usuário registrado com sucesso!", Toast.LENGTH_SHORT).show();
                             dadoEmail.setText("");
                             dadoSenha.setText("");
                         });
-                    } else if (responseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
-                        runOnUiThread(() -> Toast.makeText(login.this, "Erro: Este e-mail já está registrado.", Toast.LENGTH_SHORT).show());
+                        Home();
+                    } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
+                        runOnUiThread(() -> Toast.makeText(login.this, "Os dados estão incorretos.", Toast.LENGTH_SHORT).show());
                     } else {
-                        runOnUiThread(() -> Toast.makeText(login.this, "Erro ao registrar usuário", Toast.LENGTH_SHORT).show());
+                        runOnUiThread(() -> Toast.makeText(login.this, "Erro ao realizar Login", Toast.LENGTH_SHORT).show());
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -94,6 +93,12 @@ public class login extends AppCompatActivity {
 
     public void BotaoCadastro(View view) {
         Intent mudarTela = new Intent(getApplicationContext(), cadastro.class);
+        startActivity(mudarTela);
+    }
+
+    public void Home ()
+    {
+        Intent mudarTela = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mudarTela);
     }
 }

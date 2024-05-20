@@ -93,7 +93,7 @@
         android:color="@android:color/black"
         android:ems="10"
         android:hint="Senha"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:padding="8dp"
         android:paddingStart="50px"
         android:shadowColor="#000000"

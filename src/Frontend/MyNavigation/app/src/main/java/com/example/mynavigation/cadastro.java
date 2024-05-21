@@ -97,6 +97,8 @@ public class cadastro extends AppCompatActivity {
                             dadoEmail.setText("");
                             dadoSenha.setText("");
                         });
+                        Intent mudarTela = new Intent(getApplicationContext(), login.class);
+                        startActivity(mudarTela);
                     } else if (responseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
                         runOnUiThread(() -> Toast.makeText(cadastro.this, "Erro: Este e-mail já está registrado.", Toast.LENGTH_SHORT).show());
                     } else {

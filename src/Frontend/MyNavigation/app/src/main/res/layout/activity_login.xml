@@ -27,6 +27,7 @@
         android:backgroundTint="@color/azul"
         android:onClick="Login"
         android:text="Login"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

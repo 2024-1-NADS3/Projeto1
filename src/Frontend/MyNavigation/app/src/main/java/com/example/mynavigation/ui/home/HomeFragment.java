@@ -45,11 +45,12 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class HomeFragment extends Fragment {
-    String CHANNEL_ID = "meu_canal";
 
+    private int idUsuario = 1;
     private FragmentHomeBinding binding;
     private ListView listaTarefas;
     private static final int REQUEST_CODE_POST_NOTIFICATIONS = 1;
+    String CHANNEL_ID = "meu_canal";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class HomeFragment extends Fragment {
 
         // Carregar os dados ao entrar na tela
         MyTasks task = new MyTasks();
-        String urlApi = "https://vq4x7v-3000.csb.app/buscarTarefas";
+        String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
         task.execute(urlApi);
 
         // Configurando a data atual

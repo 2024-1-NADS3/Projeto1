@@ -14,6 +14,8 @@ import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.widget.ArrayAdapter;
 
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.example.mynavigation.R;
 
 import org.json.JSONArray;
@@ -29,6 +31,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+
 
 public class ProgressoFragment extends Fragment {
     private ProgressBar progressBar;
@@ -37,9 +44,11 @@ public class ProgressoFragment extends Fragment {
     private TextView textTotalTarefa, textPorcentagem;
     private ListView listaTarefasFeitas;
 
+    private static final String BASE_URL = "https://vq4x7v-3000.csb.app/quantidadeTarefas/";
     private int idUsuario = 1;
     private int progress = 0;
-    private int total = 5;
+    private int total = 6;
+
 
 
     public ProgressoFragment() {
@@ -62,6 +71,7 @@ public class ProgressoFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar2);
         textTotalTarefa = view.findViewById(R.id.textTotalTarefa);
         textPorcentagem = view.findViewById(R.id.textPorcentagem);
+        getTotalTasks(idUsuario);
 
 
 
@@ -71,10 +81,13 @@ public class ProgressoFragment extends Fragment {
         TextView textView9 = view.findViewById(R.id.textView9);
         ProgressoFragment.MyTasks task = new ProgressoFragment.MyTasks();
         String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
+        //String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasFinalizadas/" + idUsuario;
         task.execute(urlApi);
 
         return view;
     }
+
+
 
     private void applyGradientToText(TextView textView, int startColor, int endColor) {
         Shader textShader = new LinearGradient(0, 0, 0, textView.getTextSize(),
@@ -152,7 +165,7 @@ public class ProgressoFragment extends Fragment {
             // Atualização da ListView com adaptador
             listaTarefasFeitas.setAdapter(adaptador);
 
-            //Definindo total de tarefas para o progresso e passando como parametro
+            //Definindo tarefas feitaspara o progresso e passando como parametro
             int feitas = adaptador.getCount();
             updateProgress(total, feitas);
         }
@@ -168,5 +181,33 @@ public class ProgressoFragment extends Fragment {
             // Atualiza a barra de progresso
             progressBar.setProgress(porcentagem);
         }
+
+    }
+
+    private void getTotalTasks(int idUsuario) {
+        String url = BASE_URL + "quantidadeTarefas?id_usuario=" + idUsuario;
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            int total = response.getInt("total");
+                            textTotalTarefa.setText(total);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        error.printStackTrace();
+                    }
+                });
+
+        // Adiciona a requisição à fila do Volley
+        Volley.newRequestQueue(getActivity().getApplicationContext()).add(request);
     }
 }

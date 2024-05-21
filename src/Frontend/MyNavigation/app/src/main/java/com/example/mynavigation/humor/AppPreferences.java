@@ -3,7 +3,11 @@ package com.example.mynavigation.humor;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.mynavigation.R;
+
 public class AppPreferences {
+    private int statusUsuario = 2;
+    private String statusTela;
     private static final String PREFS_NAME = "MyAppPrefs"; // Nome do arquivo de preferências
     private static final String KEY_SELECTED_OPTION = "selected_option"; // Chave para a opção selecionada
 
@@ -26,7 +30,18 @@ public class AppPreferences {
     }
 
     public String getSelectedOption() {
-        return sharedPreferences.getString(KEY_SELECTED_OPTION, "normal"); // Valor padrão é "normal"
+
+        if (statusUsuario == 0){
+            statusTela = "mal";
+        }
+        else if (statusUsuario == 1) {
+            statusTela = "normal";
+        }
+        else {
+            statusTela = "feliz";
+        }
+
+        return sharedPreferences.getString(KEY_SELECTED_OPTION, "feliz");
     }
 }
 

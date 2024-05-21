@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mynavigation.ClasseUsuarioLogado;
 import com.example.mynavigation.R;
 import com.example.mynavigation.ui.adapter.Adapter;
 import com.example.mynavigation.ui.adapter.Tarefa;
@@ -35,7 +36,7 @@ public class TarefasFragment extends Fragment {
 
     private ListView listaTarefas;
     private Button buttonRecuperar;
-    private int idUsuario = 1;
+    private int idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
 
     private Adapter adapter;
 

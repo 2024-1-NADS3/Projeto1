@@ -24,6 +24,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.mynavigation.ClasseUsuarioLogado;
 import com.example.mynavigation.R;
 import com.example.mynavigation.databinding.FragmentHomeBinding;
 import com.example.mynavigation.humor.AppPreferences;
@@ -46,7 +47,7 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
-    private int idUsuario = 1;
+    private int idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
     private FragmentHomeBinding binding;
     private ListView listaTarefas;
     private static final int REQUEST_CODE_POST_NOTIFICATIONS = 1;
@@ -60,6 +61,7 @@ public class HomeFragment extends Fragment {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         listaTarefas = root.findViewById(R.id.listaTarefas);
+        ImageView imagemResultado = binding.imagemResultado;
 
         // Carregar os dados ao entrar na tela
         MyTasks task = new MyTasks();
@@ -80,7 +82,6 @@ public class HomeFragment extends Fragment {
 
         binding.felizButton.setOnClickListener(v -> opcaoSelecionada("happy"));
 
-        ImageView imagemResultado = binding.imagemResultado;
         String estadoAtual = AppPreferences.getInstance(requireContext()).getSelectedOption();
         switch (estadoAtual) {
             case "bad":

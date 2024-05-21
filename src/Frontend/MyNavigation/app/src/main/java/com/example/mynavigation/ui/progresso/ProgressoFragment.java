@@ -35,11 +35,12 @@ public class ProgressoFragment extends Fragment {
     private Button buttonIncreaseProgress;
     private TextView textView9;
     private TextView textTotalTarefa, textPorcentagem;
-
     private ListView listaTarefasFeitas;
+
     private int idUsuario = 1;
     private int progress = 0;
-    private int feitas = 1;
+    private int total = 5;
+
 
     public ProgressoFragment() {
         // Required empty public constructor
@@ -61,6 +62,7 @@ public class ProgressoFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar2);
         textTotalTarefa = view.findViewById(R.id.textTotalTarefa);
         textPorcentagem = view.findViewById(R.id.textPorcentagem);
+
 
 
         //Trazendo lista de tarefas
@@ -151,7 +153,7 @@ public class ProgressoFragment extends Fragment {
             listaTarefasFeitas.setAdapter(adaptador);
 
             //Definindo total de tarefas para o progresso e passando como parametro
-            int total = adaptador.getCount();
+            int feitas = adaptador.getCount();
             updateProgress(total, feitas);
         }
 

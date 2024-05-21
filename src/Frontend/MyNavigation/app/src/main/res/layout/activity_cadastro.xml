@@ -26,6 +26,7 @@
         android:backgroundTint="#293898"
         android:onClick="Cadastrar"
         android:text="CADASTRAR"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

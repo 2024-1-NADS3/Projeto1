@@ -88,14 +88,14 @@ Neste projeto, várias tecnologias e ferramentas são utilizadas para criar uma 
 -Raiz<br>
 |<br>
 |-->documentos<br>
- &emsp;|Testes_e_Qualidade_de_Software-_APP_Bem_Viver_Connect.pdf<br>
- &emsp;|Trabalho_Projeto_Bem_Viver_Connect-_UX.pdf<br>
+ &emsp;| Testes_e_Qualidade_de_Software-_APP_Bem_Viver_Connect.pdf<br>
+ &emsp;| Trabalho_Projeto_Bem_Viver_Connect-_UX.pdf<br>
 |-->imagens<br>
 |-->src<br>
  &emsp;|-->Backend<br>
  &emsp;|-->Frontend<br>
-|.gitignore<br>
-|README.md<br>
+| .gitignore<br>
+| README.md<br>
 
 ## 🛠 Instalação
 

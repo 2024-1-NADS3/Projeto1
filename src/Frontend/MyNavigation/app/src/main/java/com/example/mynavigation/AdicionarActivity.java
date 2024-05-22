@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Locale;
+
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -112,54 +113,64 @@ public class AdicionarActivity extends AppCompatActivity {
         });
     }
 
-        public void Cadastrar(View view){
-            String nome = nomeTarefa.getText().toString();
-            Integer idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();;
+    public void Cadastrar(View view) {
+        String nome = nomeTarefa.getText().toString();
+        Integer idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
+        ;
 
-            // Verificar se o campo de nome da tarefa está vazio
-            if (nome.isEmpty()) {
-                Toast.makeText(this, "O campo de nome da tarefa não pode estar vazio.", Toast.LENGTH_SHORT).show();
-                return; // Interrompe o processo de cadastro se o campo estiver vazio
-            }
-
-            //captura os dados selecionados de forma separada
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH) + 1;
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            int hour = calendar.get(Calendar.HOUR_OF_DAY);
-            int minute = calendar.get(Calendar.MINUTE);
-
-            String formattedMonth = null;
-            String formattedDay = null;
-            String formattedHour = null;
-            String formattedMinute = null;
-
-            if (month > -1 && month < 10)
-            {
-                DecimalFormat df = new DecimalFormat("00");
-                formattedMonth = df.format(month);
-            }
-            if (day > -1 && day < 10)
-            {
-                DecimalFormat df = new DecimalFormat("00");
-                formattedDay = df.format(day);
-            }
-            if (hour > -1 && hour < 10)
-            {
-                DecimalFormat df = new DecimalFormat("00");
-                formattedHour = df.format(hour);
-            }
-            if (minute > -1 && minute < 10)
-            {
-                DecimalFormat df = new DecimalFormat("00");
-                formattedMinute = df.format(minute);
-            }
-
-            String dataHorario = year + "-" + formattedMonth + "-" + formattedDay + " " + formattedHour + ":" + formattedMinute;
-            Integer status = 1;
-
-            registrarTarefaNoServidor(nome, idUsuario, dataHorario, status);
+        // Verificar se o campo de nome da tarefa está vazio
+        if (nome.isEmpty()) {
+            Toast.makeText(this, "O campo de nome da tarefa não pode estar vazio.", Toast.LENGTH_SHORT).show();
+            return; // Interrompe o processo de cadastro se o campo estiver vazio
         }
+
+        //captura os dados selecionados de forma separada
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        String formattedMonth = null;
+        String formattedDay = null;
+        String formattedHour = null;
+        String formattedMinute = null;
+        String dataHorario;
+
+        if (month > -1 && month < 10) {
+            DecimalFormat df = new DecimalFormat("00");
+            formattedMonth = df.format(month);
+        }
+        else {
+            formattedMonth = String.valueOf(month);
+        }
+        if (day > -1 && day < 10) {
+            DecimalFormat df = new DecimalFormat("00");
+            formattedDay = df.format(day);
+        }
+        else {
+            formattedDay = String.valueOf(day);
+        }
+        if (hour > -1 && hour < 10) {
+            DecimalFormat df = new DecimalFormat("00");
+            formattedHour = df.format(hour);
+        }
+        else {
+            formattedHour = String.valueOf(hour);
+        }
+        if (minute > -1 && minute < 10) {
+            DecimalFormat df = new DecimalFormat("00");
+            formattedMinute = df.format(minute);
+        }
+        else {
+            formattedMinute = String.valueOf(minute);
+        }
+
+        dataHorario = year + "-" + formattedMonth + "-" + formattedDay + " " + formattedHour + ":" + formattedMinute;
+        Integer status = 1;
+
+        registrarTarefaNoServidor(nome, idUsuario, dataHorario, status);
+    }
 
     @SuppressLint("StaticFieldLeak")
     private void registrarTarefaNoServidor(String nome, Integer idUsuario, String dataHorario, Integer status) {

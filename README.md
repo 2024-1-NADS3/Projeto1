@@ -6,6 +6,10 @@
 
 # BemViver Connect
 
+<p align="center">
+![Logo da New Beach](/imagens/Logo BemViver Connect.png)
+</p>
+
 ## Grupo 1
 
 ## Integrantes: <a href="">Luca Filgiola Silvestri</a>, <a href="">Melissa Lequipe Lecona</a>, <a href="">Nayan Pinho de Oliveira</a>, <a href="">Nicolle Maria Gonçalves Firminio</a>

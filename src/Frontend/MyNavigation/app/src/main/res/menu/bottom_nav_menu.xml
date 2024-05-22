@@ -11,18 +11,15 @@
         android:id="@+id/navigation_tarefas"
         android:icon="@drawable/baseline_checklist_24"
         android:title="Tarefas" />
-    <item
-        android:id="@+id/navigation_tarefasatrasadas"
-        android:icon="@drawable/alert_tarefa_24"
-        android:title="Tarefas Atrasadas" />
+
     <item
         android:id="@+id/navigation_progresso"
         android:icon="@drawable/star_24"
         android:title="Progresso" />
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_perfil"
         android:icon="@drawable/ic_identity_24"
-        android:title="Perfil" />
+        android:title="Perfil"/>
 
 
 

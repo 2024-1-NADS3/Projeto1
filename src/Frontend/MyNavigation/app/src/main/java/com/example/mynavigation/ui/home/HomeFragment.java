@@ -48,6 +48,8 @@ import java.util.Locale;
 public class HomeFragment extends Fragment {
 
     private int idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
+    private int statusUsuario = 2;
+    private String statusTela;
     private FragmentHomeBinding binding;
     private ListView listaTarefas;
     private static final int REQUEST_CODE_POST_NOTIFICATIONS = 1;
@@ -59,6 +61,16 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+
+        if (statusUsuario == 0){
+            AppPreferences.getInstance(requireContext()).setSelectedOption("bad");
+        }
+        else if (statusUsuario == 1) {
+            AppPreferences.getInstance(requireContext()).setSelectedOption("normal");
+        }
+        else {
+            AppPreferences.getInstance(requireContext()).setSelectedOption("happy");
+        }
 
         listaTarefas = root.findViewById(R.id.listaTarefas);
         ImageView imagemResultado = binding.imagemResultado;

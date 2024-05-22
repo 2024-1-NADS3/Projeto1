@@ -145,7 +145,7 @@ public class TarefasFragment extends Fragment {
             Adapter adapter = new Adapter(tarefas2);
             listaTarefas2.setAdapter(adapter);
 
-            //Fim do carregameno
+            //Fim do carregamento
             progressBar.setVisibility(View.GONE);
 
 

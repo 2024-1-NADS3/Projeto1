@@ -3,6 +3,7 @@ package com.example.mynavigation.ui.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -42,13 +43,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
         private TextView textDataHora, textNomeTarefa;
         private CheckBox checkTarefa;
+        private Button btnFeito;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textNomeTarefa = itemView.findViewById(R.id.textNomeTarefa);
             textDataHora = itemView.findViewById(R.id.textDataHora);
-            checkTarefa = itemView.findViewById(R.id.checkTarefa);
+            btnFeito = itemView.findViewById(R.id.btnFeito);
         }
     }
 }

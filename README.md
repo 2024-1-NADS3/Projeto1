@@ -6,9 +6,7 @@
 
 # BemViver Connect
 
-<p align="center">
-![Logo da New Beach](/imagens/Logo BemViver Connect.png)
-</p>
+![Logo BemViver Connect](/imagens/Logo BemViver Connect.png)
 
 ## Grupo 1
 

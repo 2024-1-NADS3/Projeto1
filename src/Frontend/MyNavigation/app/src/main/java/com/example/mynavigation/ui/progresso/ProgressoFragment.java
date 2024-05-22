@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.mynavigation.ClasseUsuarioLogado;
 import com.example.mynavigation.R;
 
 import org.json.JSONArray;
@@ -39,14 +40,15 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 public class ProgressoFragment extends Fragment {
     private ProgressBar progressBar;
+    private int idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
 
     private TextView textTotalTarefa, textPorcentagem;
     private ListView listaTarefasFeitas;
 
-    private static final String BASE_URL = "https://vq4x7v-3000.csb.app/quantidadeTarefas/11";
-    private int idUsuario = 1;
+    private static final String BASE_URL = "https://vq4x7v-3000.csb.app";
+
     private int progress = 0;
-    private int total = 6;
+    private int total;
 
 
 
@@ -173,7 +175,7 @@ public class ProgressoFragment extends Fragment {
     }
 
     private void getTotalTasks(int idUsuario) {
-        String url = BASE_URL + "quantidadeTarefas?id_usuario=" + idUsuario;
+        String url = BASE_URL + "/quantidadeTarefas/" + idUsuario;
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -182,7 +184,7 @@ public class ProgressoFragment extends Fragment {
                         try {
                             //int total = response.getInt("total");
                             //textTotalTarefa.setText(total);
-                            int total = response.getInt("total");
+                            total = response.getInt("total");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -133,7 +133,6 @@ public class HomeFragment extends Fragment {
                     // Enviando o ID do usuário no corpo da requisição
                     JSONObject jsonParams = new JSONObject();
                     jsonParams.put("id", userId);
-                    Log.e(TAG, "Erro na solicitação0: " + userId);
                     OutputStream os = connection.getOutputStream();
                     os.write(jsonParams.toString().getBytes("UTF-8"));
                     os.close();

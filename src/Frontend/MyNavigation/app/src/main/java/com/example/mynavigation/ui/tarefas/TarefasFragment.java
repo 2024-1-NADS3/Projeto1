@@ -63,14 +63,10 @@ public class TarefasFragment extends Fragment {
         listaTarefas2.setLayoutManager(layoutManager);
         listaTarefas2.setHasFixedSize(true);
 
-
-
-
         // Carregar o ao entrar na tela
         MyTasks task = new MyTasks();
         String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
         task.execute(urlApi);
-
 
         return view;
     }
@@ -85,9 +81,10 @@ public class TarefasFragment extends Fragment {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String nomeTarefa = jsonObject.getString("nome_tarefa");
                 String dataHora = jsonObject.getString("data_hora");
+                String dataHoraSubstituido = dataHora.replace("-", "/");
                 Tarefa tarefa = new Tarefa();
                 tarefa.setNomeTarefa(nomeTarefa);
-                tarefa.setDataHora(dataHora);
+                tarefa.setDataHora(dataHoraSubstituido);
                 listaDeTarefas.add(tarefa);
             }
         } catch (JSONException e) {

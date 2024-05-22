@@ -26,9 +26,9 @@
 
     <fragment
         android:id="@+id/navigation_perfil"
-        android:name="com.example.mynavigation.ui.perfil.TarefasAtrasadasFragment"
+        android:name="com.example.mynavigation.ui.perfil.PerfilFragment"
         android:label="Perfil"
-        tools:layout="@layout/fragment_tarefasatrasadas" />
+        tools:layout="@layout/fragment_perfil" />
 
 
 

@@ -39,12 +39,11 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 public class ProgressoFragment extends Fragment {
     private ProgressBar progressBar;
-    private Button buttonIncreaseProgress;
-    private TextView textView9;
+
     private TextView textTotalTarefa, textPorcentagem;
     private ListView listaTarefasFeitas;
 
-    private static final String BASE_URL = "https://vq4x7v-3000.csb.app/quantidadeTarefas/";
+    private static final String BASE_URL = "https://vq4x7v-3000.csb.app/quantidadeTarefas/11";
     private int idUsuario = 1;
     private int progress = 0;
     private int total = 6;
@@ -78,25 +77,14 @@ public class ProgressoFragment extends Fragment {
         //Trazendo lista de tarefas
         listaTarefasFeitas = view.findViewById(R.id.listaTarefasFeitas);
 
-        TextView textView9 = view.findViewById(R.id.textView9);
         ProgressoFragment.MyTasks task = new ProgressoFragment.MyTasks();
-        String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
-        //String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasFinalizadas/" + idUsuario;
+        //String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
+        String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasFinalizadas/" + idUsuario;
         task.execute(urlApi);
 
         return view;
     }
 
-
-
-    private void applyGradientToText(TextView textView, int startColor, int endColor) {
-        Shader textShader = new LinearGradient(0, 0, 0, textView.getTextSize(),
-                new int[]{startColor, endColor},
-                new float[]{0, 1}, Shader.TileMode.CLAMP);
-        textView.getPaint().setShader(textShader);
-
-        // Aplicando gradiente ao texto dos TextViews
-        applyGradientToText(textView9, 0x206AC1, 0x43BC9F);}
 
 
 
@@ -192,8 +180,9 @@ public class ProgressoFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            //int total = response.getInt("total");
+                            //textTotalTarefa.setText(total);
                             int total = response.getInt("total");
-                            textTotalTarefa.setText(total);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

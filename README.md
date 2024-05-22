@@ -83,7 +83,7 @@ Neste projeto, várias tecnologias e ferramentas são utilizadas para criar uma 
   <img src="imagens/Home.png" alt="Descrição da Imagem" width="300"/>
 </p>
 
-## 🛠 Estrutura de pastas
+## Estrutura de pastas
 
 -Raiz<br>
 |<br>

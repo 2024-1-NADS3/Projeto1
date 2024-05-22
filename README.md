@@ -6,7 +6,7 @@
 
 # BemViver Connect
 
-![Logo BemViver Connect](/imagens/Logo%20BemViver%20Connect.png)
+<img src="imagens/Logo%20BemViver%20Connect.png" alt="Descrição da Imagem" width="200"/>
 
 ## Grupo 1
 

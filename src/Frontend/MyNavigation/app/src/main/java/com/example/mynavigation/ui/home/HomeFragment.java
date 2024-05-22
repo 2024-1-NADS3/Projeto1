@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,10 +49,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class HomeFragment extends Fragment {
-
-    private int idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
     private int humorUsuario;
-    private String statusTela;
+    private int idUsuario;
     private FragmentHomeBinding binding;
     private ListView listaTarefas;
 
@@ -74,25 +73,16 @@ public class HomeFragment extends Fragment {
 
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
-        buscarHumor(idUsuario);
 
-        if (humorUsuario == 0){
-            AppPreferences.getInstance(requireContext()).setSelectedOption("bad");
-        }
-        else if (humorUsuario == 1) {
-            AppPreferences.getInstance(requireContext()).setSelectedOption("normal");
-        }
-        else {
-            AppPreferences.getInstance(requireContext()).setSelectedOption("happy");
-        }
-
-        listaTarefas = root.findViewById(R.id.listaTarefas);
-        ImageView imagemResultado = binding.imagemResultado;
-
+        idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
         // Carregar os dados ao entrar na tela
         MyTasks task = new MyTasks();
         String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
         task.execute(urlApi);
+        buscarHumor(idUsuario);
+
+        listaTarefas = root.findViewById(R.id.listaTarefas);
+        ImageView imagemResultado = binding.imagemResultado;
 
         // Configurando a data atual
         TextView dataHoje = binding.dataHoje;
@@ -126,7 +116,6 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    // Função para buscar o humor do usuário
     public void buscarHumor(int userId) {
         String urlString = "https://vq4x7v-3000.csb.app/buscarHumor";
 
@@ -144,6 +133,7 @@ public class HomeFragment extends Fragment {
                     // Enviando o ID do usuário no corpo da requisição
                     JSONObject jsonParams = new JSONObject();
                     jsonParams.put("id", userId);
+                    Log.e(TAG, "Erro na solicitação0: " + userId);
                     OutputStream os = connection.getOutputStream();
                     os.write(jsonParams.toString().getBytes("UTF-8"));
                     os.close();
@@ -162,11 +152,11 @@ public class HomeFragment extends Fragment {
                         JSONObject jsonResponse = new JSONObject(content.toString());
                         userHumor = jsonResponse.getInt("humor");
                     } else {
-                        Log.e(TAG, "Erro na solicitação: " + responseCode);
+                        Log.e(TAG, "Erro na solicitação1: " + responseCode);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Log.e(TAG, "Erro na solicitação: " + e.getMessage());
+                    Log.e(TAG, "Erro na solicitação2: " + e.getMessage());
                 }
                 return userHumor;
             }
@@ -174,7 +164,6 @@ public class HomeFragment extends Fragment {
             @Override
             protected void onPostExecute(Integer userHumor) {
                 super.onPostExecute(userHumor);
-                Log.d(TAG, "Humor do usuário: " + userHumor);
                 humorUsuario = userHumor;
             }
         }.execute();

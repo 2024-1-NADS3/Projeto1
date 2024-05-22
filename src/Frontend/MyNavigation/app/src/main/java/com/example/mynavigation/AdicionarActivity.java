@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -113,7 +114,7 @@ public class AdicionarActivity extends AppCompatActivity {
 
         public void Cadastrar(View view){
             String nome = nomeTarefa.getText().toString();
-            Integer idUsuario = 1;
+            Integer idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();;
 
             // Verificar se o campo de nome da tarefa está vazio
             if (nome.isEmpty()) {
@@ -127,7 +128,34 @@ public class AdicionarActivity extends AppCompatActivity {
             int day = calendar.get(Calendar.DAY_OF_MONTH);
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
             int minute = calendar.get(Calendar.MINUTE);
-            String dataHorario = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00";
+
+            String formattedMonth = null;
+            String formattedDay = null;
+            String formattedHour = null;
+            String formattedMinute = null;
+
+            if (month > -1 && month < 10)
+            {
+                DecimalFormat df = new DecimalFormat("00");
+                formattedMonth = df.format(month);
+            }
+            if (day > -1 && day < 10)
+            {
+                DecimalFormat df = new DecimalFormat("00");
+                formattedDay = df.format(day);
+            }
+            if (hour > -1 && hour < 10)
+            {
+                DecimalFormat df = new DecimalFormat("00");
+                formattedHour = df.format(hour);
+            }
+            if (minute > -1 && minute < 10)
+            {
+                DecimalFormat df = new DecimalFormat("00");
+                formattedMinute = df.format(minute);
+            }
+
+            String dataHorario = year + "-" + formattedMonth + "-" + formattedDay + " " + formattedHour + ":" + formattedMinute;
             Integer status = 1;
 
             registrarTarefaNoServidor(nome, idUsuario, dataHorario, status);

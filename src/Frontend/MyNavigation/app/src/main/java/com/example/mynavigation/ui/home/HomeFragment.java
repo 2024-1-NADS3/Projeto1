@@ -1,14 +1,18 @@
 package com.example.mynavigation.ui.home;
 
+import static android.content.ContentValues.TAG;
 import static androidx.core.content.ContextCompat.getSystemService;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
@@ -28,15 +33,18 @@ import com.example.mynavigation.ClasseUsuarioLogado;
 import com.example.mynavigation.R;
 import com.example.mynavigation.databinding.FragmentHomeBinding;
 import com.example.mynavigation.humor.AppPreferences;
+import com.example.mynavigation.login;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -48,7 +56,7 @@ import java.util.Locale;
 public class HomeFragment extends Fragment {
 
     private int idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
-    private int statusUsuario = 2;
+    private int humorUsuario;
     private String statusTela;
     private FragmentHomeBinding binding;
     private ListView listaTarefas;
@@ -62,10 +70,12 @@ public class HomeFragment extends Fragment {
 
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
-        if (statusUsuario == 0){
+        buscarHumor(idUsuario);
+
+        if (humorUsuario == 0){
             AppPreferences.getInstance(requireContext()).setSelectedOption("bad");
         }
-        else if (statusUsuario == 1) {
+        else if (humorUsuario == 1) {
             AppPreferences.getInstance(requireContext()).setSelectedOption("normal");
         }
         else {
@@ -119,6 +129,65 @@ public class HomeFragment extends Fragment {
         });
 
         return root;
+    }
+
+    // Função para buscar o humor do usuário
+    public void buscarHumor(int userId) {
+        String urlString = "https://vq4x7v-3000.csb.app/buscarHumor";
+
+        new AsyncTask<Void, Void, Integer>() {
+            @Override
+            protected Integer doInBackground(Void... voids) {
+                int userHumor = -1;
+                try {
+                    URL url = new URL(urlString);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("POST");
+                    connection.setRequestProperty("Content-Type", "application/json");
+                    connection.setDoOutput(true);
+
+                    // Enviando o ID do usuário no corpo da requisição
+                    JSONObject jsonParams = new JSONObject();
+                    jsonParams.put("id", userId);
+                    OutputStream os = connection.getOutputStream();
+                    os.write(jsonParams.toString().getBytes("UTF-8"));
+                    os.close();
+
+                    int responseCode = connection.getResponseCode();
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                        String inputLine;
+                        StringBuilder content = new StringBuilder();
+                        while ((inputLine = in.readLine()) != null) {
+                            content.append(inputLine);
+                        }
+                        in.close();
+
+                        // Parse the response to get the humor
+                        JSONObject jsonResponse = new JSONObject(content.toString());
+                        userHumor = jsonResponse.getInt("humor");
+                    } else {
+                        Log.e(TAG, "Erro na solicitação: " + responseCode);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "Erro na solicitação: " + e.getMessage());
+                }
+                return userHumor;
+            }
+
+            @Override
+            protected void onPostExecute(Integer userHumor) {
+                super.onPostExecute(userHumor);
+                Log.d(TAG, "Humor do usuário: " + userHumor);
+                humorUsuario = userHumor;
+            }
+        }.execute();
+    }
+
+    // Listener para tratar o humor buscado
+    public interface OnHumorFetchedListener {
+        void onHumorFetched(int humor);
     }
 
     @Override

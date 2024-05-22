@@ -117,17 +117,6 @@ public class HomeFragment extends Fragment {
                 break;
         }
 
-        Button btnNoti = root.findViewById(R.id.btnNot);
-        btnNoti.setOnClickListener(v -> {
-            // Verificar permissão antes de criar a notificação
-            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_CODE_POST_NOTIFICATIONS);
-            } else {
-                // Cria a notificação
-                makeNotification();
-            }
-        });
-
         return root;
     }
 

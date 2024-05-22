@@ -36,31 +36,42 @@ public class TarefasAtrasadasFragment extends Fragment {
     private ProgressBar progressBar;
     private RelativeLayout mainContainer;
     private TextView errorText;
+
     public TarefasAtrasadasFragment() {
         // Required empty public constructor
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tarefasatrasadas, container, false);
+
+        progressBar = view.findViewById(R.id.loader);
+        errorText = view.findViewById(R.id.errorText);
 
         new WeatherTask().execute();
 
         return view;
     }
 
-
     private class WeatherTask extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBar.setVisibility(View.VISIBLE);
-            mainContainer.setVisibility(View.GONE);
-            errorText.setVisibility(View.GONE);
+            if (progressBar != null) {
+                progressBar.setVisibility(View.VISIBLE);
+            }
+            if (mainContainer != null) {
+                mainContainer.setVisibility(View.GONE);
+            }
+            if (errorText != null) {
+                errorText.setVisibility(View.GONE);
+            }
         }
 
         @Override
@@ -70,10 +81,8 @@ public class TarefasAtrasadasFragment extends Fragment {
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
 
-                // Verifica o código de resposta antes de ler os dados
                 int responseCode = connection.getResponseCode();
                 if (responseCode == HttpURLConnection.HTTP_OK) {
-                    // Use um BufferedReader para ler a resposta da conexão
                     BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                     StringBuilder response = new StringBuilder();
                     String line;
@@ -81,61 +90,71 @@ public class TarefasAtrasadasFragment extends Fragment {
                         response.append(line);
                     }
                     reader.close();
-
-                    // Converta a resposta para uma String
-                    String responseData = response.toString();
-                    return responseData; // Retorna a resposta obtida com sucesso
+                    return response.toString();
                 } else {
-                    return null; // Retorna null se houver erro na resposta (código diferente de HTTP_OK)
+                    return null;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                return null; // Retorna null em caso de exceção
+                return null;
             }
         }
-
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            try {
-                JSONObject jsonObj = new JSONObject(result);
-                JSONObject main = jsonObj.getJSONObject("main");
-                JSONObject sys = jsonObj.getJSONObject("sys");
-                JSONObject wind = jsonObj.getJSONObject("wind");
-                JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
+            if (result != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(result);
+                    JSONObject main = jsonObj.getJSONObject("main");
+                    JSONObject sys = jsonObj.getJSONObject("sys");
+                    JSONObject wind = jsonObj.getJSONObject("wind");
+                    JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
 
-                long updatedAt = jsonObj.getLong("dt");
-                String temp = main.getString("temp") + "°C";
-                String tempMin = "Min Temp: " + main.getString("temp_min") + "°C";
-                String tempMax = "Max Temp: " + main.getString("temp_max") + "°C";
+                    String temp = main.getString("temp") + "°C";
+                    String tempMin = "Min Temp: " + main.getString("temp_min") + "°C";
+                    String tempMax = "Max Temp: " + main.getString("temp_max") + "°C";
+                    String weatherDescription = weather.getString("description");
 
+                    TextView statusTextView = getView().findViewById(R.id.status);
+                    TextView tempTextView = getView().findViewById(R.id.temp);
+                    TextView tempMinTextView = getView().findViewById(R.id.temp_min);
+                    TextView tempMaxTextView = getView().findViewById(R.id.temp_max);
 
-                long sunrise = sys.getLong("sunrise");
-                long sunset = sys.getLong("sunset");
-                String windSpeed = wind.getString("speed");
-                String weatherDescription = weather.getString("description");
+                    if (statusTextView != null) {
+                        statusTextView.setText(capitalize(weatherDescription));
+                    }
+                    if (tempTextView != null) {
+                        tempTextView.setText(temp);
+                    }
+                    if (tempMinTextView != null) {
+                        tempMinTextView.setText(tempMin);
+                    }
+                    if (tempMaxTextView != null) {
+                        tempMaxTextView.setText(tempMax);
+                    }
 
-                String address = jsonObj.getString("name") + ", " + sys.getString("country");
-
-                TextView statusTextView = getView().findViewById(R.id.status);
-                TextView tempTextView = getView().findViewById(R.id.temp);
-                TextView tempMinTextView = getView().findViewById(R.id.temp_min);
-                TextView tempMaxTextView = getView().findViewById(R.id.temp_max);
-
-
-                statusTextView.setText(capitalize(weatherDescription));
-                tempTextView.setText(temp);
-                tempMinTextView.setText(tempMin);
-                tempMaxTextView.setText(tempMax);
-
-
-                progressBar.setVisibility(View.GONE);
-                mainContainer.setVisibility(View.VISIBLE);
-
-            } catch (Exception e) {
-                progressBar.setVisibility(View.GONE);
-                errorText.setVisibility(View.VISIBLE);
+                    if (progressBar != null) {
+                        progressBar.setVisibility(View.GONE);
+                    }
+                    if (mainContainer != null) {
+                        mainContainer.setVisibility(View.VISIBLE);
+                    }
+                } catch (Exception e) {
+                    if (progressBar != null) {
+                        progressBar.setVisibility(View.GONE);
+                    }
+                    if (errorText != null) {
+                        errorText.setVisibility(View.VISIBLE);
+                    }
+                }
+            } else {
+                if (progressBar != null) {
+                    progressBar.setVisibility(View.GONE);
+                }
+                if (errorText != null) {
+                    errorText.setVisibility(View.VISIBLE);
+                }
             }
         }
 

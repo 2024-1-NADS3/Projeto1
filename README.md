@@ -20,7 +20,7 @@
 
 <br>O aplicativo Bem Viver Connect, tem como objetivo o promover organização, agilidade na rotina dos seus usuários. Ele terá um checklist onde os usuários terão a oportunidade de inserir suas rotinas diárias, simplificando a gestão do tempo para hábitos saudáveis. Além do mais, o aplicativo visa aprimorar a qualidade de vida dos usuários.
 
-  O publico alvo do aplicativo são jovens interessado em gerenciar suas rotinas, em busca de uma vida mais organizada e saudável. O aplicativo tem o foco de proporcionar uma experiência acessível e personalizável para essa faixa etária, facilitando a incorporação de práticas saudáveis no seu cotidiano.
+  O publico alvo do aplicativo consiste de jovens interessados em gerenciar suas rotinas, em busca de uma vida mais organizada e saudável. O aplicativo tem o foco de proporcionar uma experiência acessível e personalizável para essa faixa etária, facilitando a incorporação de práticas saudáveis no seu cotidiano.
 <br>
 
 ## 🛠 Estrutura de pastas

@@ -6,10 +6,6 @@
 
 # BemViver Connect
 
-<p align="center">
-  <img src="imagens/Logo%20BemViver%20Connect.png" alt="Descrição da Imagem" width="300"/>
-</p>
-
 ## Grupo 1
 
 ## Integrantes: <a href="">Luca Filgiola Silvestri</a>, <a href="">Melissa Lequipe Lecona</a>, <a href="">Nayan Pinho de Oliveira</a>, <a href="">Nicolle Maria Gonçalves Firminio</a>
@@ -17,6 +13,10 @@
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>, <a href="https://www.linkedin.com/in/victorbarq/">Adriano Felix Valente</a>, <a href="https://www.linkedin.com/in/victorbarq/">Francisco de Souza Escobar</a>
 
 ## Descrição
+
+<p align="center">
+  <img src="imagens/Logo%20BemViver%20Connect.png" alt="Descrição da Imagem" width="300"/>
+</p>
 
 <br>O aplicativo Bem Viver Connect, tem como objetivo o promover organização, agilidade na rotina dos seus usuários. Ele terá um checklist onde os usuários terão a oportunidade de inserir suas rotinas diárias, simplificando a gestão do tempo para hábitos saudáveis. Além do mais, o aplicativo visa aprimorar a qualidade de vida dos usuários.
 

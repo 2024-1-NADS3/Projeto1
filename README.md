@@ -23,6 +23,79 @@
   O publico alvo do aplicativo consiste de jovens interessados em gerenciar suas rotinas, em busca de uma vida mais organizada e saudável. O aplicativo tem o foco de proporcionar uma experiência acessível e personalizável para essa faixa etária, facilitando a incorporação de práticas saudáveis no seu cotidiano.
 <br>
 
+## Funcionalidades
+* Criação de tarefas para organização da rotina pessoal
+* Exibição e controle de humor
+* Acompanhamento do processo de realização de tarefas
+* Notificações referentes aos avanços das tarefas
+
+# Tecnologias Utilizadas no Projeto
+
+Neste projeto, várias tecnologias e ferramentas são utilizadas para criar uma aplicação completa, desde o backend até o frontend. Abaixo estão as principais tecnologias envolvidas:
+
+## Backend
+
+1. **Node.js**:
+   - **Descrição**: Node.js é um ambiente de execução JavaScript que permite executar código JavaScript no lado do servidor.
+   - **Uso**: Utilizado para criar o servidor backend que lida com as solicitações HTTP, gerencia a lógica do aplicativo e interage com o banco de dados.
+
+2. **Express.js**:
+   - **Descrição**: Express.js é um framework de aplicativo web para Node.js.
+   - **Uso**: Utilizado para criar e gerenciar rotas HTTP de maneira simplificada.
+
+3. **SQLite**:
+   - **Descrição**: SQLite é um banco de dados SQL leve, autocontido e embutido.
+   - **Uso**: Utilizado como o banco de dados do projeto para armazenar informações sobre usuários e tarefas.
+
+## Frontend
+
+1. **Android Studio**:
+   - **Descrição**: Android Studio é o ambiente de desenvolvimento integrado (IDE) oficial para o desenvolvimento de aplicativos Android.
+   - **Uso**: Utilizado para desenvolver o aplicativo Android, incluindo a interface do usuário (UI), lógica de aplicação e integração com o backend.
+
+2. **Java**:
+   - **Descrição**: Java é uma linguagem de programação orientada a objetos amplamente usada para o desenvolvimento de aplicativos Android.
+   - **Uso**: Utilizada para escrever a lógica do aplicativo Android, incluindo a interação com o backend e o gerenciamento da UI.
+
+## Outras Ferramentas e Bibliotecas
+
+1. **RecyclerView**:
+   - **Descrição**: RecyclerView é um componente de visualização do Android que permite exibir listas de dados de maneira eficiente.
+   - **Uso**: Utilizado para exibir a lista de tarefas no aplicativo Android.
+
+2. **AsyncTask**:
+   - **Descrição**: AsyncTask é uma classe do Android que permite operações em segundo plano e atualizações da UI.
+   - **Uso**: Utilizada para realizar operações de rede em segundo plano, como enviar e receber dados do servidor.
+
+3. **JSON**:
+   - **Descrição**: JSON (JavaScript Object Notation) é um formato leve de intercâmbio de dados.
+   - **Uso**: Utilizado para enviar e receber dados estruturados entre o servidor e o aplicativo Android.
+
+4. **HTTP**:
+   - **Descrição**: Protocolo de Transferência de Hipertexto (HTTP) é um protocolo de aplicação para sistemas de informação distribuídos, colaborativos e hipermídia.
+   - **Uso**: Utilizado como protocolo de comunicação entre o cliente Android e o servidor Node.js.
+
+## Integração
+
+1. **HttpURLConnection**:
+   - **Descrição**: HttpURLConnection é uma classe do Java que facilita a comunicação HTTP.
+   - **Uso**: Utilizada para enviar solicitações HTTP ao servidor a partir do aplicativo Android.
+
+## Ferramentas de Desenvolvimento
+
+1. **Logcat**:
+   - **Descrição**: Logcat é uma ferramenta de depuração que mostra registros do sistema e logs de aplicativos em execução no Android.
+   - **Uso**: Utilizado para depuração e monitoramento de logs no Android Studio.
+
+2. **Toast**:
+   - **Descrição**: Toast é uma classe do Android para mostrar pequenas notificações na UI.
+   - **Uso**: Utilizado para exibir mensagens curtas ao usuário no aplicativo Android.
+
+Essas tecnologias juntas formam a base para desenvolver um aplicativo Android robusto e funcional que se comunica eficientemente com um servidor backend para gerenciar dados de usuários e tarefas.
+
+## Design
+O design do projeto foi criado utilizando o Figma. O layout, paleta de cores, tipografia e elementos visuais foram planejados para refletir a identidade do aplicativo BemViver Connect.
+
 ## 🛠 Estrutura de pastas
 
 -Raiz<br>

@@ -1,16 +1,8 @@
 package com.example.mynavigation.ui.home;
 
 import static android.content.ContentValues.TAG;
-import static androidx.core.content.ContextCompat.getSystemService;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -24,9 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -34,8 +23,7 @@ import com.example.mynavigation.ClasseUsuarioLogado;
 import com.example.mynavigation.R;
 import com.example.mynavigation.databinding.FragmentHomeBinding;
 import com.example.mynavigation.humor.AppPreferences;
-import com.example.mynavigation.login;
-import com.example.mynavigation.ui.perfil.TarefasAtrasadasFragment;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,8 +53,7 @@ public class HomeFragment extends Fragment {
     private int idUsuario;
     private FragmentHomeBinding binding;
     private ListView listaTarefas;
-    private static final int REQUEST_CODE_POST_NOTIFICATIONS = 1;
-    String CHANNEL_ID = "meu_canal";
+
 
     private static final String CITY = "Sao Paulo,br";
     private static final String API = "06c921750b9a82d8f5d1294e1586276f";
@@ -275,36 +262,6 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public void makeNotification() {
-        createNotificationChannel();
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_ID)
-                .setSmallIcon(R.drawable.alert_tarefa_24)
-                .setContentTitle("Lembre-se de fazer suas tarefas")
-                .setContentText("Isso é uma notificação de exemplo")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        notificationManager.notify(1, builder.build());
-    }
-
-    private void createNotificationChannel() {
-        // Criação do canal de notificação
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            CharSequence name = "Task Notification";
-            String description = "Channel for task notifications";
-            int importance = NotificationManagerCompat.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_MIN);
-            channel.setDescription(description);
-
-            // Registra o canal no sistema; não pode ser alterado depois que está registrado
-            NotificationManager notificationManager = requireContext().getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
 
 
     //Tempo

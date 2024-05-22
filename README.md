@@ -75,6 +75,10 @@ Neste projeto, várias tecnologias e ferramentas são utilizadas para criar uma 
 
 ## Design
 
+<p align="center">
+  <img src="imagens/Home.png" alt="Descrição da Imagem" width="300"/>
+</p>
+
 1. **Figma**:
    - **Descrição**: Figma é um aplicativo destinado à criação de design de aplicativos.
    - **Uso**: Utilizada para criação do layout, paleta de cores, tipografia e elementos visuais planejados para refletir a identidade do aplicativo BemViver Connect.

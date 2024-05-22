@@ -6,7 +6,9 @@
 
 # BemViver Connect
 
-<img src="imagens/Logo%20BemViver%20Connect.png" alt="Descrição da Imagem" width="200"/>
+<p align="center">
+  <img src="imagens/Logo%20BemViver%20Connect.png" alt="Descrição da Imagem" width="200"/>
+</p>
 
 ## Grupo 1
 

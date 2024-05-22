@@ -74,7 +74,10 @@ Neste projeto, várias tecnologias e ferramentas são utilizadas para criar uma 
    - **Uso**: Utilizada para enviar solicitações HTTP ao servidor a partir do aplicativo Android.
 
 ## Design
-O design do projeto foi criado utilizando o Figma. O layout, paleta de cores, tipografia e elementos visuais foram planejados para refletir a identidade do aplicativo BemViver Connect.
+
+1. **Figma**:
+   - **Descrição**: Figma é um aplicativo destinado à criação de design de aplicativos.
+   - **Uso**: Utilizada para criação do layout, paleta de cores, tipografia e elementos visuais planejados para refletir a identidade do aplicativo BemViver Connect.
 
 ## 🛠 Estrutura de pastas
 

@@ -316,7 +316,10 @@ public class HomeFragment extends Fragment {
                     JSONObject wind = jsonObj.getJSONObject("wind");
                     JSONObject weather = jsonObj.getJSONArray("weather").getJSONObject(0);
 
-                    String temp = main.getString("temp") + "°C";
+                    double tempValue = main.getDouble("temp");
+                    int tempRounded = (int) Math.round(tempValue);
+                    String temp = tempRounded + "°C";
+
                     String tempMin = "Min Temp: " + main.getString("temp_min") + "°C";
                     String tempMax = "Max Temp: " + main.getString("temp_max") + "°C";
                     String weatherDescription = weather.getString("description");

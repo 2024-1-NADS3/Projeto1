@@ -112,20 +112,28 @@ Coloque código do prompt de comnando se for necessário
 
 <b>Windows:</b>
 
-## Pré-requisitos
+### Pré-requisitos
 
-- Android Studio instalado na sua máquina.
+- Android Studio instalado e configurado na sua máquina.
 
-## Passos para Instalação
+### Passos para Instalação
 
-### 1. Clone o Repositório
-
-Clone o repositório do projeto para a sua máquina local usando o seguinte comando:
+1. Clone o repositório do projeto para a sua máquina local usando o seguinte comando:
 
 ```bash
 git clone https://github.com/2024-1-NADS3/Projeto1.git
 cd Projeto1
 ```
+
+2. Abra o projeto pelo Android Studio, localizado em `Projeto1-main\src\Frontend\MyNavigation`.
+
+3. Conecte um dispositivo Android ao seu computador ou inicie um emulador Android no Android Studio.
+   
+4. Certifique-se de que o servidor Node.js está em execução no CodeSandbox e o banco de dados SQLite está configurado corretamente, acessando o link <a href=https://codesandbox.io/p/devbox/bemviver-connect-vq4x7v>https://codesandbox.io/p/devbox/bemviver-connect-vq4x7v<a>.
+   
+5. No Android Studio, clique no botão "Run" (ícone de play) na barra de ferramentas ou pressione Shift + F10.
+
+6. Selecione o dispositivo ou emulador onde deseja executar o aplicativo.
 
 ## 💻 Configuração para Desenvolvimento
 

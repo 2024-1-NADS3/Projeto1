@@ -62,7 +62,7 @@ public class ProgressoFragment extends Fragment {
         textPorcentagem = view.findViewById(R.id.textPorcentagem);
         listaTarefasFeitas = view.findViewById(R.id.listaTarefasFeitas);
 
-      
+
         CountDownLatch latch = new CountDownLatch(1);
 
         getTotalTasks(idUsuario, latch);

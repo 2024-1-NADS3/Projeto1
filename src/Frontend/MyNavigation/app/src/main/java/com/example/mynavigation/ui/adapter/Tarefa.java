@@ -8,16 +8,15 @@ public class Tarefa {
     private String nomeTarefa;
     private String dataHora;
 
-    private Button btnFeito;
+    private static Button btnFeito;
 
-    public Button getBtnFeito() {
+    public static Button getBtnFeito() {
         return btnFeito;
     }
 
     public void setBtnFeito(Button btnFeito) {
         this.btnFeito = btnFeito;
     }
-
 
     public String getNomeTarefa() {
         return nomeTarefa;

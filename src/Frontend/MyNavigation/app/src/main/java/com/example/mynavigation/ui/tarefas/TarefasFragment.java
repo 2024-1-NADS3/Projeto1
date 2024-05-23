@@ -1,5 +1,6 @@
 package com.example.mynavigation.ui.tarefas;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,15 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynavigation.ClasseUsuarioLogado;
 import com.example.mynavigation.R;
+import com.example.mynavigation.humor.AppPreferences;
 import com.example.mynavigation.ui.adapter.Adapter;
 import com.example.mynavigation.ui.adapter.Tarefa;
 
@@ -27,19 +32,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TarefasFragment extends Fragment {
 
     private ListView listaTarefas;
-    private Button buttonRecuperar;
     private int idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
-
     private Adapter adapter;
-
     private RecyclerView listaTarefas2;
     private ProgressBar progressBar;
 
@@ -71,7 +75,6 @@ public class TarefasFragment extends Fragment {
         return view;
     }
 
-
     //recycler
     private ArrayList<Tarefa> parseJSON(String json) {
         ArrayList<Tarefa> listaDeTarefas = new ArrayList<>();
@@ -81,6 +84,7 @@ public class TarefasFragment extends Fragment {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String nomeTarefa = jsonObject.getString("nome_tarefa");
                 String dataHora = jsonObject.getString("data_hora");
+                Integer id = jsonObject.getInt("id");
                 String dataHoraSubstituido = dataHora.replace("-", "/");
                 Tarefa tarefa = new Tarefa();
                 tarefa.setNomeTarefa(nomeTarefa);
@@ -147,5 +151,41 @@ public class TarefasFragment extends Fragment {
 
 
         }
+    }
+
+    private void mudarStatus() {
+        String urlString = "https://vq4x7v-3000.csb.app/atualizarStatus/" + 5 + "/" + 0;
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                Context context = null;
+                try {
+                    URL url = new URL(urlString);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("POST");
+                    connection.setDoOutput(true);
+                    connection.setRequestProperty("Content-Type", "application/json");
+
+                    OutputStream os = connection.getOutputStream();
+                    os.flush();
+                    os.close();
+
+                    int responseCode = connection.getResponseCode();
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        runOnUiThread(() -> Toast.makeText(context, "Status atualizado com sucesso", Toast.LENGTH_SHORT).show());
+                    } else {
+                        runOnUiThread(() -> Toast.makeText(context, "Erro ao atualizar status", Toast.LENGTH_SHORT).show());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    runOnUiThread(() -> Toast.makeText(context, "Erro na solicitação: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                }
+                return null;
+            }
+
+            private void runOnUiThread(Runnable runnable) {
+            }
+        }.execute();
     }
 }

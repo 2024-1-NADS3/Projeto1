@@ -44,7 +44,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         private TextView textDataHora, textNomeTarefa;
         private CheckBox checkTarefa;
         private Button btnFeito;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 

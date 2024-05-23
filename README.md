@@ -101,13 +101,13 @@ Neste projeto, várias tecnologias e ferramentas são utilizadas para criar uma 
 
 Este projeto consiste em um aplicativo Android desenvolvido em Java utilizando o Android Studio. O aplicativo se conecta a um servidor Node.js hospedado no CodeSandbox, que interage com um banco de dados SQLite. A seguir, você encontrará as instruções para configurar e executar o projeto.
 
-<b>Android:</b>
+### Android
 
-### Pré-requisitos
+<b>Pré-requisitos</b>
 
 - Aparelho celular Android com espaço de, pelo menos, 25 MB de armazenamento livre.
 
-### Passos para Instalação
+<b>Passos para Instalação</b>
 
 - O aplicativo já está publicado na Google Play Store e pode ser encontrado pelo nome "BemViver Connect". Alternativamente, o aplicativo pode ser instalado pelo arquivo APK, como explicado nos passos seguintes:
    
@@ -115,13 +115,13 @@ Este projeto consiste em um aplicativo Android desenvolvido em Java utilizando o
    
 2. Execute o arquivo e siga as instruções do seu telefone.
 
-<b>Windows:</b>
+### Windows:
 
-### Pré-requisitos
+<b>Pré-requisitos</b>
 
 - Android Studio instalado e configurado na sua máquina.
 
-### Passos para Instalação
+<b>Passos para Instalação</b>
 
 1. Clone o repositório do projeto para a sua máquina local usando o seguinte comando:
 

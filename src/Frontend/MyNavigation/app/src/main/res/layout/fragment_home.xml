@@ -16,15 +16,15 @@
 
         <ListView
             android:id="@+id/listaTarefas"
-            android:layout_width="361dp"
-            android:layout_height="172dp"
+            android:layout_width="363dp"
+            android:layout_height="145dp"
             android:layout_marginStart="33dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="33dp"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.312"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
             tools:ignore="MissingConstraints" />
@@ -49,34 +49,11 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="32dp"
             android:text="Lembre de fazer suas tarefas"
+            android:textColor="@color/verde_agua"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="116dp"
-            android:layout_marginEnd="33dp"
-            android:src="@drawable/user_circle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imagemResultado"
-            android:layout_width="27dp"
-            android:layout_height="23dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.929"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.255"
-            app:srcCompat="@drawable/neutro" />
 
         <TextView
             android:id="@+id/textView5"
@@ -84,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Como você está?"
+            android:textColor="@color/verde_agua"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -140,12 +118,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/listaTarefas" />
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="272dp"
             android:layout_height="54dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="116dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="144dp"
             android:background="@drawable/gradient_verde"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -165,13 +144,36 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="144dp"
+            android:layout_marginEnd="33dp"
+            android:src="@drawable/user_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imagemResultado"
+            android:layout_width="27dp"
+            android:layout_height="23dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.94"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.294"
+            app:srcCompat="@drawable/neutro" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="348dp"
-            android:layout_height="99dp"
+            android:layout_height="110dp"
             android:background="@drawable/clima_background"
+            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -179,7 +181,7 @@
             <LinearLayout
                 android:id="@+id/overviewContainer"
                 android:layout_width="349dp"
-                android:layout_height="104dp"
+                android:layout_height="101dp"
                 android:layout_centerInParent="true"
                 android:backgroundTint="@color/teal_700"
                 android:orientation="vertical"
@@ -195,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Clear Sky"
-                    android:textSize="18dp" />
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -211,7 +213,7 @@
                         android:layout_marginStart="20dp"
                         android:fontFamily="sans-serif-thin"
                         android:text="29.0°C"
-                        android:textColor="@color/white"
+                        android:textColor="#DA44A7B8"
                         android:textSize="40sp"
                         android:textStyle="bold" />
 

@@ -3,10 +3,21 @@ package com.example.mynavigation.ui.adapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.example.mynavigation.R;
+
 public class Tarefa {
 
     private String nomeTarefa;
     private String dataHora;
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     private static Button btnFeito;
 

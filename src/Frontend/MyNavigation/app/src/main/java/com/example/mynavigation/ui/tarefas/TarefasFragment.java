@@ -89,6 +89,7 @@ public class TarefasFragment extends Fragment {
                 Tarefa tarefa = new Tarefa();
                 tarefa.setNomeTarefa(nomeTarefa);
                 tarefa.setDataHora(dataHoraSubstituido);
+                tarefa.setId(id);
                 listaDeTarefas.add(tarefa);
             }
         } catch (JSONException e) {

@@ -11,11 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynavigation.R;
+import com.example.mynavigation.databinding.FragmentHomeBinding;
+import com.example.mynavigation.ui.tarefas.TarefasFragment;
 
 import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     private ArrayList<Tarefa> listaTarefas;
+    private static Button btnFeito;
+    private TarefasFragment binding;
 
     public Adapter(ArrayList<Tarefa> listaTarefas) {
         this.listaTarefas = listaTarefas;
@@ -32,14 +36,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         Tarefa tarefa = listaTarefas.get(position);
         holder.textNomeTarefa.setText(tarefa.getNomeTarefa());
         holder.textDataHora.setText(tarefa.getDataHora());
-        // Configurar o CheckBox, se necessário
+
+
+        Integer idTarefa = tarefa.getId();
+        btnFeito = holder.btnFeito;
+
+//        btnFeito.setOnClickListener();
     }
 
     @Override
     public int getItemCount() {
         return listaTarefas.size();
     }
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         private TextView textDataHora, textNomeTarefa;
         private CheckBox checkTarefa;

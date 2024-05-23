@@ -99,6 +99,8 @@ Neste projeto, várias tecnologias e ferramentas são utilizadas para criar uma 
 
 ## 🛠 Instalação
 
+Este projeto consiste em um aplicativo Android desenvolvido em Java utilizando Android Studio. O aplicativo se conecta a um servidor Node.js hospedado no CodeSandbox, que interage com um banco de dados SQLite. Abaixo estão as instruções para configurar e executar o projeto.
+
 <b>Android:</b>
 
 Faça o Download do JOGO.apk no seu celular.
@@ -110,17 +112,20 @@ Coloque código do prompt de comnando se for necessário
 
 <b>Windows:</b>
 
-Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
+## Pré-requisitos
 
-```sh
-Coloque código do prompt de comnando se for necessário
+- Android Studio instalado na sua máquina.
+
+## Passos para Instalação
+
+### 1. Clone o Repositório
+
+Clone o repositório do projeto para a sua máquina local usando o seguinte comando:
+
+```bash
+git clone https://github.com/2024-1-NADS3/Projeto1.git
+cd Projeto1
 ```
-
-<b>HTML:</b>
-
-Não há instalação!
-Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
 
 ## 💻 Configuração para Desenvolvimento
 

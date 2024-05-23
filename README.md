@@ -101,8 +101,6 @@ Neste projeto, várias tecnologias e ferramentas são utilizadas para criar uma 
 
 Este projeto consiste em um aplicativo Android desenvolvido em Java utilizando o Android Studio. O aplicativo se conecta a um servidor Node.js hospedado no CodeSandbox, que interage com um banco de dados SQLite. A seguir, você encontrará as instruções para configurar e executar o projeto.
 
-O aplicativo já está publicado na Google Play Store e pode ser encontrado pelo nome "BemViver Connect".
-
 <b>Android:</b>
 
 ### Pré-requisitos

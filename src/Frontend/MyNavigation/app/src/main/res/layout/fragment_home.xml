@@ -19,7 +19,7 @@
             android:layout_width="363dp"
             android:layout_height="145dp"
             android:layout_marginStart="33dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="33dp"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
@@ -98,7 +98,7 @@
             android:id="@+id/btn_nova_tarefa"
             android:layout_width="329dp"
             android:layout_height="56dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="15dp"
             android:background="@color/azul"
             android:drawableEnd="@drawable/add_circle"
             android:drawablePadding="0dp"
@@ -124,7 +124,7 @@
             android:layout_width="272dp"
             android:layout_height="54dp"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="144dp"
+            android:layout_marginTop="120dp"
             android:background="@drawable/gradient_verde"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -144,11 +144,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:layout_marginTop="144dp"
+            android:layout_marginTop="120dp"
             android:layout_marginEnd="33dp"
             android:src="@drawable/user_circle"
             app:layout_constraintEnd_toEndOf="parent"
@@ -162,16 +163,16 @@
             android:layout_height="23dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.94"
+            app:layout_constraintHorizontal_bias="0.945"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.294"
+            app:layout_constraintVertical_bias="0.277"
             app:srcCompat="@drawable/neutro" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="348dp"
-            android:layout_height="110dp"
+            android:layout_height="90dp"
             android:background="@drawable/clima_background"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -181,7 +182,7 @@
             <LinearLayout
                 android:id="@+id/overviewContainer"
                 android:layout_width="349dp"
-                android:layout_height="101dp"
+                android:layout_height="80dp"
                 android:layout_centerInParent="true"
                 android:backgroundTint="@color/teal_700"
                 android:orientation="vertical"
@@ -214,7 +215,7 @@
                         android:fontFamily="sans-serif-thin"
                         android:text="29.0°C"
                         android:textColor="#DA44A7B8"
-                        android:textSize="40sp"
+                        android:textSize="30sp"
                         android:textStyle="bold" />
 
                     <Space
@@ -223,8 +224,8 @@
 
 
                     <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="55dp"
+                        android:layout_width="52dp"
+                        android:layout_height="42dp"
                         app:srcCompat="@drawable/icon_clima"></ImageView>
                 </LinearLayout>
 

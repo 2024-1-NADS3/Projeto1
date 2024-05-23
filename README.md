@@ -99,28 +99,48 @@ Neste projeto, várias tecnologias e ferramentas são utilizadas para criar uma 
 
 ## 🛠 Instalação
 
-<b>Android:</b>
+Este projeto consiste em um aplicativo Android desenvolvido em Java utilizando o Android Studio. O aplicativo se conecta a um servidor Node.js hospedado no CodeSandbox, que interage com um banco de dados SQLite. A seguir, você encontrará as instruções para configurar e executar o projeto.
 
-Faça o Download do JOGO.apk no seu celular.
-Execute o APK e siga as instruções de seu telefone.
+### Android:
 
-```sh
-Coloque código do prompt de comnando se for necessário
+<b>Pré-requisitos</b>
+
+- Aparelho celular Android com espaço de, pelo menos, 25 MB de armazenamento livre.
+
+<b>Passos para Instalação</b>
+
+- O aplicativo já está publicado na Google Play Store e pode ser encontrado pelo nome "BemViver Connect". Alternativamente, o aplicativo pode ser instalado pelo arquivo APK, como explicado nos passos seguintes:
+   
+1. Faça o download do arquivo NOME DO APLICATIVO.apk no seu celular.
+   
+2. Execute o arquivo e siga as instruções do seu telefone.
+
+### Windows:
+
+<b>Pré-requisitos</b>
+
+- Android Studio instalado e configurado na sua máquina.
+
+<b>Passos para Instalação</b>
+
+1. Clone o repositório do projeto para a sua máquina local usando o seguinte comando:
+
+```bash
+git clone https://github.com/2024-1-NADS3/Projeto1.git
+cd Projeto1
 ```
 
-<b>Windows:</b>
+2. Abra o projeto pelo Android Studio, localizado em `Projeto1-main\src\Frontend\MyNavigation`.
 
-Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
+3. Conecte um dispositivo Android ao seu computador ou inicie um emulador Android no Android Studio.
+   
+4. Certifique-se de que o servidor Node.js está em execução no CodeSandbox e o banco de dados SQLite está configurado corretamente, acessando o link <a href=https://codesandbox.io/p/devbox/bemviver-connect-vq4x7v>https://codesandbox.io/p/devbox/bemviver-connect-vq4x7v<a>.
+   
+5. No Android Studio, clique no botão "Run" (ícone de play) na barra de ferramentas ou pressione Shift + F10.
 
-```sh
-Coloque código do prompt de comnando se for necessário
-```
+6. Selecione o dispositivo ou emulador onde deseja executar o aplicativo.
 
-<b>HTML:</b>
-
-Não há instalação!
-Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
+7. Acesse o aplicativo.
 
 ## 💻 Configuração para Desenvolvimento
 

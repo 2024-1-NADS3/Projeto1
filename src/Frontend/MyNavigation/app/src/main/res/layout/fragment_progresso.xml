@@ -9,9 +9,9 @@
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="99dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="60dp"
+        android:layout_width="100dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="57dp"
         android:max="100"
         android:progress="0"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,7 @@
         android:layout_marginEnd="68dp"
         android:text="Progresso"
         android:textColor="@color/teal_700"
-        android:textSize="17sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -62,18 +62,31 @@
         android:layout_marginTop="20dp"
         android:text="Tarefas Feitas"
         android:textColor="@color/teal_700"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/listaTarefasFeitas"
-        android:layout_width="330dp"
+        android:layout_width="345dp"
         android:layout_height="359dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulosFeitas" />
+
+    <TextView
+        android:id="@+id/titulosFeitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="40dp"
+        android:text="Tarefas Feitas"
+        android:textColor="@color/teal_700"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTotalTarefa" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.example.mynavigation.ui.progresso;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -157,6 +159,28 @@ public class ProgressoFragment extends Fragment {
 
             // Atualiza a barra de progresso
             progressBar.setProgress(porcentagem);
+
+            // Verifica se a porcentagem é 100% e exibe o diálogo de parabéns
+            if (porcentagem == 100) {
+                showCongratulationsDialog();
+            }
+        }
+
+        private void showCongratulationsDialog() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Parabéns!");
+            builder.setMessage("Todas as suas tarefas estão completas. Bom trabalho!");
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // Ação ao clicar em OK, se necessário
+                }
+            });
+
+            // Criar e exibir o diálogo
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
     }
 

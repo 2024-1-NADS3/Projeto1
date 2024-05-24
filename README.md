@@ -208,9 +208,9 @@ Selecione Run 'All Tests' ou Run 'androidTest' para executar os testes de unidad
 
 ## 🗃 Histórico de lançamentos
 
-* 0.2.1 - 24/05/2024
+* 0.2.0 - 24/05/2024
     * MUDANÇA: Atualização para o novo servidor node.js
-* 0.2.0 - 23/05/2024
+* 0.1.1 - 23/05/2024
     * Lançamento oficial completo, com todas as funcionalidades aplicadas
 * 0.1.0 - 11/05/2024
     * O primeiro lançamento adequado com integração com o servidor

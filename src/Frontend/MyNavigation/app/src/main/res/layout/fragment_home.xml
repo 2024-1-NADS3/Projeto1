@@ -124,7 +124,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="272dp"
             android:layout_height="54dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="27dp"
             android:background="@drawable/gradient_verde"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -148,6 +148,7 @@
             android:id="@+id/imageView"
             android:layout_width="54dp"
             android:layout_height="54dp"
+            android:layout_marginStart="1dp"
             android:layout_marginEnd="32dp"
             android:src="@drawable/user_circle"
             app:layout_constraintEnd_toEndOf="parent"

@@ -111,7 +111,7 @@
             android:paddingBottom="6dp"
             android:text="Adicionar nova tarefa"
             android:textColor="@android:color/background_light"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintCircleRadius="?attr/dialogCornerRadius"
             app:layout_constraintEnd_toEndOf="parent"

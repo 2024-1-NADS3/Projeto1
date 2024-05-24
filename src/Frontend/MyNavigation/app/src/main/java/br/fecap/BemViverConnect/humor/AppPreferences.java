@@ -44,7 +44,7 @@ public class AppPreferences {
     }
 
     private void updateHumorInDatabase(int userId, int humor) {
-        String urlString = "https://vq4x7v-3000.csb.app/atualizarUsuario/" + userId + "/" + humor;
+        String urlString = "https://qy5dwc-3000.csb.app/atualizarUsuario/" + userId + "/" + humor;
 
         new AsyncTask<Void, Void, Void>() {
             @Override

@@ -60,7 +60,7 @@ public class TarefasFragment extends Fragment {
         listaTarefas2.setHasFixedSize(true);
 
         MyTasks task = new MyTasks();
-        String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
+        String urlApi = "https://qy5dwc-3000.csb.app/obterTarefasAtivas/" + idUsuario;
         task.execute(urlApi);
 
         return view;

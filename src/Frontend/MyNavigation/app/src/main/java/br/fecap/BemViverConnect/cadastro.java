@@ -57,7 +57,7 @@ public class cadastro extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     private void registrarUsuarioNoServidor(String nome, String email, String senha, Integer humor) {
-        String url = "https://vq4x7v-3000.csb.app/cadastrarUsuario";
+        String url = "https://qy5dwc-3000.csb.app/cadastrarUsuario";
         JSONObject jsonParams = new JSONObject();
         try {
             Log.d("CLIENTE", "Nome: " + nome);

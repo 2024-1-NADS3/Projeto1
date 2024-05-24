@@ -68,7 +68,7 @@ public class PerfilFragment extends Fragment {
 
     public void buscarDados(Integer id) {
 
-        String urlString = "https://vq4x7v-3000.csb.app/dadosUsuario/" + id;
+        String urlString = "https://qy5dwc-3000.csb.app/dadosUsuario/" + id;
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {

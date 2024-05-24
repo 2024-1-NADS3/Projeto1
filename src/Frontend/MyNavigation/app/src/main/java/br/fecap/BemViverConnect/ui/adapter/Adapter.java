@@ -81,7 +81,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     public void mudarStatus(Integer id, RecyclerView.Adapter adapter) {
         Log.e(TAG, "Id: " + id);
 
-        String urlString = "https://vq4x7v-3000.csb.app/atualizarStatus/" + id + "/" + 0;
+        String urlString = "https://qy5dwc-3000.csb.app/atualizarStatus/" + id + "/" + 0;
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {

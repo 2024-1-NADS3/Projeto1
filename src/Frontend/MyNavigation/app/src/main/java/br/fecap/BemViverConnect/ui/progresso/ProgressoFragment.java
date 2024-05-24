@@ -40,7 +40,7 @@ public class ProgressoFragment extends Fragment {
     private TextView textTotalTarefa, textPorcentagem;
     private ListView listaTarefasFeitas;
 
-    private static final String BASE_URL = "https://vq4x7v-3000.csb.app";
+    private static final String BASE_URL = "https://qy5dwc-3000.csb.app";
     private int total;
 
     public ProgressoFragment() {

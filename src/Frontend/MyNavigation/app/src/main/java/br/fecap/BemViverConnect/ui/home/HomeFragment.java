@@ -71,7 +71,7 @@ public class HomeFragment extends Fragment {
         idUsuario = ClasseUsuarioLogado.getIdUsuarioLogado();
         // Carregar os dados ao entrar na tela
         MyTasks task = new MyTasks();
-        String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
+        String urlApi = "https://qy5dwc-3000.csb.app/obterTarefasAtivas/" + idUsuario;
         task.execute(urlApi);
         buscarHumor(idUsuario);
 
@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void buscarHumor(int userId) {
-        String urlString = "https://vq4x7v-3000.csb.app/buscarHumor";
+        String urlString = "https://qy5dwc-3000.csb.app/buscarHumor";
 
         new AsyncTask<Void, Void, Integer>() {
             @Override

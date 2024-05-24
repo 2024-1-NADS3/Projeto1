@@ -51,7 +51,7 @@ public class login extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     private void fazerLogin(String email, String senha) {
-        String url = "https://vq4x7v-3000.csb.app/login";
+        String url = "https://qy5dwc-3000.csb.app/login";
         JSONObject jsonParams = new JSONObject();
         try {
             Log.d("CLIENTE", "Email: " + email);

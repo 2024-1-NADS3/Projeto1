@@ -162,7 +162,7 @@ public class AdicionarActivity extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     private void registrarTarefaNoServidor(String nome, Integer idUsuario, String dataHorario, Integer status) {
-        String url = "https://vq4x7v-3000.csb.app/cadastrarTarefa";
+        String url = "https://qy5dwc-3000.csb.app/cadastrarTarefa";
         JSONObject jsonParams = new JSONObject();
         try {
             Log.d("CLIENTE", "Nome: " + nome);

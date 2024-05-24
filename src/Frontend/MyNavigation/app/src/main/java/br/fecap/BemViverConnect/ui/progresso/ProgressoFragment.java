@@ -1,11 +1,13 @@
 package br.fecap.BemViverConnect.ui.progresso;
 
+import android.app.AlertDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -157,7 +159,39 @@ public class ProgressoFragment extends Fragment {
 
             // Atualiza a barra de progresso
             progressBar.setProgress(porcentagem);
+
+            if (porcentagem == 100) {
+                showCongratulationsDialog();
+            }
         }
+    }
+
+    private void showCongratulationsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        // layout personalizado
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.success_dialog, null);
+        //layout inflado no AlertDialog.Builder
+        builder.setView(dialogView);
+
+        // Criar o AlertDialog
+        final AlertDialog dialog = builder.create();
+
+
+        // Obtendo referencia do botão ok
+        Button successDone = dialogView.findViewById(R.id.successDone);
+
+        // Configurar o botão de ação
+        successDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        // Exibir o dialog
+        dialog.show();
     }
 
     private void getTotalTasks(int idUsuario, CountDownLatch latch) {

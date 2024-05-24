@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="75dp"
-        tools:context="br.fecap.BemViverConnect.ui.perfil.PerfilFragment">
+        tools:context=".ui.perfil.PerfilFragment">
 
 
         <ListView
@@ -23,6 +23,7 @@
             android:layout_marginEnd="33dp"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
+            android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.312"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,19 +48,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="32dp"
-            android:text="Lembre de fazer suas tarefas"
+            android:layout_marginTop="20dp"
+            android:text="Próximas tarefas"
             android:textColor="@color/verde_agua"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="24dp"
             android:text="Como você está?"
             android:textColor="@color/verde_agua"
             android:textSize="20sp"
@@ -99,7 +100,7 @@
             android:layout_width="329dp"
             android:layout_height="56dp"
             android:layout_marginTop="15dp"
-            android:background="@color/azul"
+            android:background="@color/blue"
             android:drawableEnd="@drawable/add_circle"
             android:drawablePadding="0dp"
             android:onClick="BotaoAddTarefa"
@@ -110,7 +111,7 @@
             android:paddingBottom="6dp"
             android:text="Adicionar nova tarefa"
             android:textColor="@android:color/background_light"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintCircleRadius="?attr/dialogCornerRadius"
             app:layout_constraintEnd_toEndOf="parent"
@@ -123,8 +124,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="272dp"
             android:layout_height="54dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginStart="30dp"
             android:background="@drawable/gradient_verde"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -144,13 +144,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="33dp"
+            android:layout_marginEnd="32dp"
             android:src="@drawable/user_circle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -163,21 +161,22 @@
             android:layout_height="23dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.945"
+            app:layout_constraintHorizontal_bias="0.929"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.277"
+            app:layout_constraintVertical_bias="0.058"
             app:srcCompat="@drawable/neutro" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="348dp"
             android:layout_height="90dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/clima_background"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
             <LinearLayout
                 android:id="@+id/overviewContainer"
@@ -198,6 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Clear Sky"
+                    android:textColor="@color/material_dynamic_neutral20"
                     android:textSize="12sp" />
 
                 <LinearLayout
@@ -239,7 +239,8 @@
                         android:id="@+id/temp_min"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Min Temp: 05:05 AM" />
+                        android:text="Min Temp: 05:05 AM"
+                        android:textColor="@color/material_dynamic_neutral20" />
 
                     <Space
                         android:layout_width="50dp"
@@ -249,7 +250,8 @@
                         android:id="@+id/temp_max"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Max Temp: 05:05 PM" />
+                        android:text="Max Temp: 05:05 PM"
+                        android:textColor="@color/material_dynamic_neutral20" />
                 </LinearLayout>
 
                 <ProgressBar

@@ -9,58 +9,98 @@
     tools:context="br.fecap.BemViverConnect.ui.perfil.PerfilFragment">
 
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="164dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="107dp"
-        android:src="@drawable/ic_identity_24"
-        app:layout_constraintBottom_toTopOf="@+id/emailText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button3"
         android:layout_width="259dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="330dp"
+        android:layout_marginTop="110dp"
         android:background="@color/fundo_escuro_azul"
         android:onClick="BotaoLogoff"
         android:text="Logout"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailText" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    <TextView
-        android:id="@+id/nomeText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:layout_marginBottom="38dp"
-        android:text="TextView"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/emailText"
+        android:layout_marginTop="50dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/emailText"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imageIcon"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_identity_24"
+            app:layout_constraintEnd_toStartOf="@+id/nomeText"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="28dp" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/nomeText"
+            android:layout_width="222dp"
+            android:layout_height="40dp"
+            android:gravity="start|center_horizontal"
+            android:paddingTop="5dp"
+            android:text="Nome"
+            android:textColor="#1f2121"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/emailText"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
-        android:text="TextView"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        android:layout_marginTop="35dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <ImageView
+            android:id="@+id/imageEmail"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_email_24"
+            app:layout_constraintEnd_toStartOf="@+id/emailText"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="105dp" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/emailText"
+            android:layout_width="222dp"
+            android:layout_height="40dp"
+            android:gravity="start|center_horizontal"
+            android:paddingTop="5dp"
+            android:text="E-mail"
+            android:textColor="#1f2121"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="116dp" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

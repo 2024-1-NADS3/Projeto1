@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context="br.fecap.BemViverConnect.cadastro">
-
+    tools:context="br.fecap.BemViverConnect.login">
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="227dp"
         android:layout_height="89dp"
         android:layout_marginTop="81dp"
-        android:layout_marginBottom="69dp"
+        android:layout_marginBottom="60dp"
         android:src="@drawable/logo_bemviver"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,15 +50,18 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="7dp"
-        android:text="Adicione seus dados."
+        android:layout_width="293dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-thin"
+        android:text="Entre com sua conta no Bem Viver Connect"
+        android:textColor="@color/material_dynamic_neutral30"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/emailCadastro"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -79,6 +81,7 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/senhaCadastro"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

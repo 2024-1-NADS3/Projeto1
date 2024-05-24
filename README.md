@@ -111,7 +111,7 @@ Este projeto consiste em um aplicativo Android desenvolvido em Java utilizando o
 
 - O aplicativo já está publicado na Google Play Store e pode ser encontrado pelo nome "BemViver Connect". Alternativamente, o aplicativo pode ser instalado pelo arquivo APK, como explicado nos passos seguintes:
    
-1. Faça o download do arquivo app-release.apk no seu celular. O arquivo pode ser encontrado em `Projeto1-main\release`.
+1. Faça o download do arquivo app-release.apk no seu celular. O arquivo pode ser encontrado em `Projeto1-main\arquivos .aab-.apk`.
    
 2. Execute o arquivo e siga as instruções do seu telefone.
 

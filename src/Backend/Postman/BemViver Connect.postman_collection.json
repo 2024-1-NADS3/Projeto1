@@ -24,10 +24,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/buscarUsuarios",
+					"raw": "https://qy5dwc-3000.csb.app/buscarUsuarios",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -56,10 +56,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/buscarTarefas",
+					"raw": "https://qy5dwc-3000.csb.app/buscarTarefas",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -88,10 +88,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/obterTarefasAtivas/11",
+					"raw": "https://qy5dwc-3000.csb.app/obterTarefasAtivas/11",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -121,10 +121,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/obterTarefasFinalizadas/11",
+					"raw": "https://qy5dwc-3000.csb.app/obterTarefasFinalizadas/11",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -154,10 +154,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/dadosUsuario/1",
+					"raw": "https://qy5dwc-3000.csb.app/dadosUsuario/1",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -184,10 +184,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/obterTarefas",
+					"raw": "https://qy5dwc-3000.csb.app/obterTarefas",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -213,10 +213,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/cadastrarUsuario",
+					"raw": "https://qy5dwc-3000.csb.app/cadastrarUsuario",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -242,10 +242,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/cadastrarTarefa",
+					"raw": "https://qy5dwc-3000.csb.app/cadastrarTarefa",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -271,44 +271,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/deletarTarefa",
+					"raw": "https://qy5dwc-3000.csb.app/deletarTarefa",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
 					"path": [
 						"deletarTarefa"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DeletarUsuario",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"teste@gmail.com\",\r\n    \"senha\" : \"123\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/deletarUsuario",
-					"protocol": "https",
-					"host": [
-						"vq4x7v-3000",
-						"csb",
-						"app"
-					],
-					"path": [
-						"deletarUsuario"
 					]
 				}
 			},
@@ -329,10 +300,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/login",
+					"raw": "https://qy5dwc-3000.csb.app/login",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -361,10 +332,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/quantidadeTarefas/1",
+					"raw": "https://qy5dwc-3000.csb.app/quantidadeTarefas/1",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -391,10 +362,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/buscarId",
+					"raw": "https://qy5dwc-3000.csb.app/buscarId",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -420,10 +391,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/atualizarUsuario/1/2",
+					"raw": "https://qy5dwc-3000.csb.app/atualizarUsuario/1/2",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -451,10 +422,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/atualizarStatus/1/0",
+					"raw": "https://qy5dwc-3000.csb.app/atualizarStatus/1/0",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],
@@ -482,10 +453,10 @@
 					}
 				},
 				"url": {
-					"raw": "https://vq4x7v-3000.csb.app/buscarHumor",
+					"raw": "https://qy5dwc-3000.csb.app/buscarHumor",
 					"protocol": "https",
 					"host": [
-						"vq4x7v-3000",
+						"qy5dwc-3000",
 						"csb",
 						"app"
 					],

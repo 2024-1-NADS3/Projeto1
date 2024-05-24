@@ -219,6 +219,7 @@ Selecione Run 'All Tests' ou Run 'androidTest' para executar os testes de unidad
 
 ## 📋 Licença/License
 
+O projeto não possui licenças.
 
 ## 🎓 Referências
 

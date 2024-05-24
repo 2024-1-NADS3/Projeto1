@@ -163,7 +163,7 @@ cd Projeto1-main
 
 <b>Configuração do Servidor Node.js</b>
 
-A configuração do servidor foi feita pela aplicação CodeSandBox, você pode acessá-la pelo link <a href=https://codesandbox.io/p/devbox/bemviver-connect-qy5dwc>https://codesandbox.io/p/devbox/bemviver-connect-qy5dwc<a>
+A configuração do servidor foi feita pela aplicação CodeSandBox, você pode acessá-la pelo link <a href=https://codesandbox.io/p/devbox/bemviver-connect-qy5dwc>https://codesandbox.io/p/devbox/bemviver-connect-qy5dwc<a>.
 
 O servidor estará rodando em ´https://qy5dwc-3000.csb.app´.
 

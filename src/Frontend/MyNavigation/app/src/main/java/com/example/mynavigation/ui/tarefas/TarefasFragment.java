@@ -1,6 +1,8 @@
 package com.example.mynavigation.ui.tarefas;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,12 +17,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mynavigation.ClasseUsuarioLogado;
 import com.example.mynavigation.R;
 import com.example.mynavigation.humor.AppPreferences;
+import com.example.mynavigation.login;
 import com.example.mynavigation.ui.adapter.Adapter;
 import com.example.mynavigation.ui.adapter.Tarefa;
 
@@ -67,7 +72,6 @@ public class TarefasFragment extends Fragment {
         listaTarefas2.setLayoutManager(layoutManager);
         listaTarefas2.setHasFixedSize(true);
 
-        // Carregar o ao entrar na tela
         MyTasks task = new MyTasks();
         String urlApi = "https://vq4x7v-3000.csb.app/obterTarefasAtivas/" + idUsuario;
         task.execute(urlApi);
@@ -150,43 +154,6 @@ public class TarefasFragment extends Fragment {
             //Fim do carregamento
             progressBar.setVisibility(View.GONE);
 
-
         }
-    }
-
-    private void mudarStatus() {
-        String urlString = "https://vq4x7v-3000.csb.app/atualizarStatus/" + 5 + "/" + 0;
-
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                Context context = null;
-                try {
-                    URL url = new URL(urlString);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("POST");
-                    connection.setDoOutput(true);
-                    connection.setRequestProperty("Content-Type", "application/json");
-
-                    OutputStream os = connection.getOutputStream();
-                    os.flush();
-                    os.close();
-
-                    int responseCode = connection.getResponseCode();
-                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                        runOnUiThread(() -> Toast.makeText(context, "Status atualizado com sucesso", Toast.LENGTH_SHORT).show());
-                    } else {
-                        runOnUiThread(() -> Toast.makeText(context, "Erro ao atualizar status", Toast.LENGTH_SHORT).show());
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    runOnUiThread(() -> Toast.makeText(context, "Erro na solicitação: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-                }
-                return null;
-            }
-
-            private void runOnUiThread(Runnable runnable) {
-            }
-        }.execute();
     }
 }

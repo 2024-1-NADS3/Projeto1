@@ -9,9 +9,9 @@
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="100dp"
-        android:layout_height="22dp"
-        android:layout_marginEnd="57dp"
+        android:layout_width="99dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="60dp"
         android:max="100"
         android:progress="0"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,6 @@
         android:layout_marginTop="6dp"
         android:layout_marginEnd="76dp"
         android:text="0%"
-        android:textColor="@color/text_padrao"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -33,10 +32,9 @@
         android:id="@+id/textTotalTarefa"
         android:layout_width="84dp"
         android:layout_height="49dp"
-        android:layout_marginStart="73dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="8dp"
         android:text="0/0"
-        android:textColor="@color/text_padrao"
         android:textSize="38sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -45,11 +43,10 @@
         android:id="@+id/textView8"
         android:layout_width="85dp"
         android:layout_height="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="68dp"
         android:text="Progresso"
-        android:textColor="@color/teal_700"
-        android:textSize="18sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,33 +57,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
-        android:text="Tarefas Feitas"
-        android:textColor="@color/teal_700"
-        android:textSize="18sp"
+        android:text="Tarefas feitas"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/listaTarefasFeitas"
-        android:layout_width="345dp"
+        android:layout_width="330dp"
         android:layout_height="359dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulosFeitas" />
-
-    <TextView
-        android:id="@+id/titulosFeitas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="40dp"
-        android:text="Tarefas Feitas"
-        android:textColor="@color/teal_700"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTotalTarefa" />
 </androidx.constraintlayout.widget.ConstraintLayout>

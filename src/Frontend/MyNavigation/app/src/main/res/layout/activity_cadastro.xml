@@ -111,7 +111,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginEnd="52dp"
         android:layout_marginBottom="24dp"
-        android:background="#C3C3C3"
+        android:background="@drawable/fundo_textinput"
         android:ems="10"
         android:hint="Nome"
         android:inputType="textPersonName"

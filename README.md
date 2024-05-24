@@ -176,8 +176,35 @@ O servidor estará rodando em ´https://qy5dwc-3000.csb.app´.
 2. Aguarde o Android Studio sincronizar e baixar todas as dependências.
 
 <b>Executar o Test-Suite Automatizado</b>
-Servidor Node.js
-Para rodar os testes automatizados do servidor, você pode usar um framework como o Mocha e o Chai. Se você ainda não os tiver instalados, adicione-os ao seu projeto:
+
+<b>Para rodar os testes automatizados do servidor:</b>
+
+Você pode usar um framework como o Mocha e o Chai. Se você ainda não os tiver instalados, adicione-os ao seu projeto:
+
+```bash
+npm install mocha chai --save-dev
+```
+
+Adicione um script de teste ao seu package.json:
+
+```json
+"scripts": {
+  "test": "mocha"
+}
+```
+
+Crie um diretório test e adicione seus arquivos de teste. Por exemplo, test/server.test.js.
+
+Para rodar os testes, use:
+
+```bash
+npm test
+```
+
+<b>Para executar os testes instrumentados no Android Studio:</b>
+
+No Android Studio, abra o painel Run.
+Selecione Run 'All Tests' ou Run 'androidTest' para executar os testes de unidade ou instrumentados, respectivamente.
 
 ## 🗃 Histórico de lançamentos
 

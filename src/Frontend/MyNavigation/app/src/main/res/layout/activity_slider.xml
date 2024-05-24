@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.slider.Slider">
+    tools:context="br.fecap.BemViverConnect.ui.slider.Slider">
 
 
     <androidx.appcompat.widget.AppCompatButton

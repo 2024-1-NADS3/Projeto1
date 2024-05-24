@@ -16,16 +16,16 @@
         android:theme="@style/Theme.MyNavigation"
         tools:targetApi="31">
         <activity
-            android:name=".ui.slider.Slider"
+            android:name="br.fecap.BemViverConnect.ui.slider.Slider"
             android:theme="@style/AppTheme"
             android:exported="false" />
 
         <activity
-            android:name=".AdicionarActivity"
+            android:name="br.fecap.BemViverConnect.AdicionarActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="br.fecap.BemViverConnect.MainActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name="br.fecap.BemViverConnect.SplashActivity"
             android:theme="@style/AppTheme"
             android:exported="true">
             <intent-filter>
@@ -36,20 +36,20 @@
         </activity>
 
         <activity
-            android:name=".cadastro"
+            android:name="br.fecap.BemViverConnect.cadastro"
             android:theme="@style/AppTheme"
             android:exported="true"
             android:label="Cadastro"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".login"
+            android:name="br.fecap.BemViverConnect.login"
             android:theme="@style/AppTheme"
             android:exported="true"
             android:label="Login"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name="br.fecap.BemViverConnect.MainActivity"
             android:exported="true"
             android:label="@string/app_name" />
     </application>

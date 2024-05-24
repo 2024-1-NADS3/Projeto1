@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.perfil.PerfilFragment">
+    tools:context="br.fecap.BemViverConnect.ui.perfil.PerfilFragment">
 
 
     <ImageView
@@ -25,7 +25,8 @@
         android:layout_width="259dp"
         android:layout_height="50dp"
         android:layout_marginBottom="330dp"
-        android:background="@android:color/system_error_light"
+        android:background="@color/fundo_escuro_azul"
+        android:onClick="BotaoLogoff"
         android:text="Logout"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -43,6 +44,7 @@
         android:layout_marginBottom="38dp"
         android:text="TextView"
         android:textSize="20sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/emailText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +57,7 @@
         android:layout_marginBottom="88dp"
         android:text="TextView"
         android:textSize="20sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

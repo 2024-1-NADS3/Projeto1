@@ -7,26 +7,26 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.mynavigation.ui.home.HomeFragment"
+        android:name="br.fecap.BemViverConnect.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
 
     <fragment
         android:id="@+id/navigation_tarefas"
-        android:name="com.example.mynavigation.ui.tarefas.TarefasFragment"
+        android:name="br.fecap.BemViverConnect.ui.tarefas.TarefasFragment"
         android:label="Tarefas"
         tools:layout="@layout/fragment_tarefas" />
 
     <fragment
         android:id="@+id/navigation_progresso"
-        android:name="com.example.mynavigation.ui.progresso.ProgressoFragment"
+        android:name="br.fecap.BemViverConnect.ui.progresso.ProgressoFragment"
         android:label="Progresso"
         tools:layout="@layout/fragment_progresso" />
 
     <fragment
         android:id="@+id/navigation_perfil"
-        android:name="com.example.mynavigation.ui.perfil.PerfilFragment"
+        android:name="br.fecap.BemViverConnect.ui.perfil.PerfilFragment"
         android:label="Perfil"
         tools:layout="@layout/fragment_perfil" />
 

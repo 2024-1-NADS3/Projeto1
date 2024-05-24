@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="75dp"
-        tools:context=".ui.perfil.PerfilFragment">
+        tools:context="br.fecap.BemViverConnect.ui.perfil.PerfilFragment">
 
 
         <ListView

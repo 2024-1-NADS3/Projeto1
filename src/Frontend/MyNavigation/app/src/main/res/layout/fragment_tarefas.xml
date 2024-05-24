@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.tarefas.TarefasFragment">
+    tools:context="br.fecap.BemViverConnect.ui.tarefas.TarefasFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -47,7 +47,7 @@
         android:layout_width="279dp"
         android:layout_height="41dp"
         android:layout_marginStart="24dp"
-        android:text="Continue com o bom trabalho!  Finalize suas tarefas!"
+        android:text="Continue com o bom trabalho! Finalize suas tarefas!"
         android:textColor="@color/text_padrao"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"

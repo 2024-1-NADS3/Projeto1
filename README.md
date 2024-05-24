@@ -134,7 +134,7 @@ cd Projeto1
 
 3. Conecte um dispositivo Android ao seu computador ou inicie um emulador Android no Android Studio.
    
-4. Certifique-se de que o servidor Node.js está em execução no CodeSandbox e o banco de dados SQLite está configurado corretamente, acessando o link <a href=https://codesandbox.io/p/devbox/bemviver-connect-vq4x7v>https://codesandbox.io/p/devbox/bemviver-connect-vq4x7v<a>.
+4. Certifique-se de que o servidor Node.js está em execução no CodeSandbox e o banco de dados SQLite está configurado corretamente, acessando o link <a href=https://codesandbox.io/p/devbox/bemviver-connect-qy5dwc>https://codesandbox.io/p/devbox/bemviver-connect-qy5dwc<a>.
    
 5. No Android Studio, clique no botão "Run" (ícone de play) na barra de ferramentas ou pressione Shift + F10.
 
@@ -144,33 +144,77 @@ cd Projeto1
 
 ## 💻 Configuração para Desenvolvimento
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
-
 Para abrir este projeto você necessita das seguintes ferramentas:
 
--<a href="https://godotengine.org/download">GODOT</a>
+- [Node.js](https://nodejs.org/) (versão 14 ou superior)
+- [Android Studio](https://developer.android.com/studio)
+- [Git](https://git-scm.com/)
 
-```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
+<b>Passos para Configuração</b>
+
+<b>Clonar o Repositório</b>
+
+Primeiro, clone o repositório para a sua máquina local usando Git:
+
+```bash
+git clone https://github.com/2024-1-NADS3/Projeto1.git
+cd Projeto1-main
 ```
+
+<b>Configuração do Servidor Node.js</b>
+
+A configuração do servidor foi feita pela aplicação CodeSandBox, você pode acessá-la pelo link <a href=https://codesandbox.io/p/devbox/bemviver-connect-qy5dwc>https://codesandbox.io/p/devbox/bemviver-connect-qy5dwc<a>.
+
+O servidor estará rodando em ´https://qy5dwc-3000.csb.app´.
+
+<b>Configuração do Projeto Android</b>
+
+1. Abra o Android Studio.
+
+1. Clique em 'Open an existing Android Studio project' e selecione o diretório do projeto Android (Projeto1-main\src\Frontend\MyNavigation).
+
+2. Aguarde o Android Studio sincronizar e baixar todas as dependências.
+
+<b>Executar o Test-Suite Automatizado</b>
+
+<b>Para rodar os testes automatizados do servidor:</b>
+
+Você pode usar um framework como o Mocha e o Chai. Se você ainda não os tiver instalados, adicione-os ao seu projeto:
+
+```bash
+npm install mocha chai --save-dev
+```
+
+Adicione um script de teste ao seu package.json:
+
+```json
+"scripts": {
+  "test": "mocha"
+}
+```
+
+Crie um diretório test e adicione seus arquivos de teste. Por exemplo, test/server.test.js.
+
+Para rodar os testes, use:
+
+```bash
+npm test
+```
+
+<b>Para executar os testes instrumentados no Android Studio:</b>
+
+No Android Studio, abra o painel Run.
+Selecione Run 'All Tests' ou Run 'androidTest' para executar os testes de unidade ou instrumentados, respectivamente.
 
 ## 🗃 Histórico de lançamentos
 
-A cada atualização os detalhes devem ser lançados aqui.
-
-* 0.2.1 - 25/01/2022
-    * MUDANÇA: Atualização de docs (código do módulo permanece inalterado)
-* 0.2.0 - 15/01/2022
-    * MUDANÇA: Remove `setDefaultXYZ()`
-    * ADD: Adiciona `init()`
-* 0.1.1 - 11/01/2022
-    * CONSERTADO: Crash quando chama `baz()` (Obrigado @NomeDoContribuidorGeneroso!)
-* 0.1.0 - 10/01/2022
-    * O primeiro lançamento adequado
-    * MUDANÇA: Renomeia `foo()` para `bar()`
-* 0.0.1 - 01/01/2022
+* 0.2.0 - 24/05/2024
+    * MUDANÇA: Atualização para o novo servidor node.js
+* 0.1.1 - 23/05/2024
+    * Lançamento oficial completo, com todas as funcionalidades aplicadas
+* 0.1.0 - 11/05/2024
+    * O primeiro lançamento adequado com integração com o servidor
+* 0.0.1 - 03/04/2024
     * Trabalho em andamento
 
 ## 📋 Licença/License

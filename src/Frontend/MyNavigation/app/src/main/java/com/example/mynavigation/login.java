@@ -3,7 +3,9 @@ package com.example.mynavigation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -75,6 +77,8 @@ public class login extends AppCompatActivity {
                     int responseCode = connection.getResponseCode();
                     if (responseCode == HttpURLConnection.HTTP_OK) {
                         buscarId(email);
+                        /// salvando em shared preferences
+                        saveUserEmail(email);
 
                         // Delay de 1000 milissegundos antes de chamar a função Home
                         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
@@ -188,5 +192,19 @@ public class login extends AppCompatActivity {
                 }
             }
         }.execute();
+    }
+
+    private void saveUserEmail(String email) {
+        // Obtém uma referência para as preferências compartilhadas
+        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+
+        // Abre o editor das preferências compartilhadas para edição
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Salva o email do usuário usando uma chave correspondente
+        editor.putString("user_email", email);
+
+        // Confirma a edição
+        editor.apply();
     }
 }

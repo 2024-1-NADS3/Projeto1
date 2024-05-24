@@ -87,5 +87,7 @@ public class AppPreferences {
     public String getSelectedOption() {
         return sharedPreferences.getString(KEY_SELECTED_OPTION, "normal");
     }
+
+
 }
 

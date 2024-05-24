@@ -116,7 +116,7 @@ public class login extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     private void buscarId(String email) {
-        String url = "https://vq4x7v-3000.csb.app/buscarId";
+        String url = "https://qy5dwc-3000.csb.app/buscarId";
         JSONObject jsonParams = new JSONObject();
         try {
             Log.d("CLIENTE", "Email: " + email);
